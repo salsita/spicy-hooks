@@ -13,7 +13,7 @@ export interface DeferredMock<T = any, Y extends any[] = any> extends jest.Mock<
    * @param timeout maximum amount of milliseconds to wait for the call before throwing a time-out exception (default is ˙300˙)
    * @returns promise of this mock function
    */
-  afterNextCall (timeout?: number): Promise<DeferredMock<T, Y>>
+  afterNextCall: (timeout?: number) => Promise<DeferredMock<T, Y>>
   /**
    * Wait for Nth call to the mocked function from the moment this function is called.
    *
@@ -21,7 +21,7 @@ export interface DeferredMock<T = any, Y extends any[] = any> extends jest.Mock<
    * @param timeout maximum amount of milliseconds to wait for the Nth call before throwing a time-out exception (default is ˙300˙)
    * @returns promise of this mock function
    */
-  afterNthCall (callCount: number, timeout?: number): Promise<DeferredMock<T, Y>>
+  afterNthCall: (callCount: number, timeout?: number) => Promise<DeferredMock<T, Y>>
 }
 
 export function deferredFn (): DeferredMock

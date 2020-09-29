@@ -5,7 +5,7 @@ export type UseContext<T> = (() => T) & { Provider: Provider<T> }
 export function createUseContext<T> ({ contextName }: { contextName: string }): UseContext<T | undefined>
 export function createUseContext<T> ({ defaultValue }: { contextName: string, defaultValue: T }): UseContext<T>
 export function createUseContext<T> ({ nonNull, nullMessage }: { contextName: string, nonNull: true, nullMessage?: string }): UseContext<T>
-export function createUseContext<T> ({ contextName, defaultValue, nonNull, nullMessage }: { contextName: string, defaultValue?: T, nonNull?: true, nullMessage?: string }) {
+export function createUseContext<T> ({ contextName, defaultValue, nonNull = false, nullMessage }: { contextName: string, defaultValue?: T, nonNull?: boolean, nullMessage?: string }) {
   const context = createContext<T | undefined>(defaultValue)
   context.displayName = contextName
   const useContextValue = (() => {

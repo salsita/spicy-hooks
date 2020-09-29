@@ -1,0 +1,81 @@
+{
+  "extends": [
+    "standard-with-typescript"
+  ],
+  "plugins": [
+    "import", "react-hooks"
+  ],
+  "parserOptions": {
+    "project": [
+      "tsconfig.json"
+    ]
+  },
+  "rules": {
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          [
+            "builtin",
+            "external"
+          ]
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/strict-boolean-expressions": [
+          "error",
+          {
+            "allowString": true,
+            "allowNumber": true,
+            "allowNullableObject": true,
+            "allowNullableBoolean": false,
+            "allowNullableString": false,
+            "allowNullableNumber": false,
+            "allowAny": false,
+            "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": false
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": [
+          "error",
+          {
+            "ignoreConditionalTests": true,
+            "ignoreMixedLogicalExpressions": true
+          }
+        ],
+        "@typescript-eslint/return-await": [
+          "error",
+          "in-try-catch"
+        ],
+        "@typescript-eslint/promise-function-async": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            "checksVoidReturn": true
+          }
+        ],
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/no-invalid-void-type": "off"
+      }
+    },
+    {
+      "files": [
+        "**/*.spec.ts",
+        "**/*.spec.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-floating-promises": "off"
+      }
+    }
+  ]
+}

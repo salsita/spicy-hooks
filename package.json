@@ -13,14 +13,27 @@
   "devDependencies": {
     "@testing-library/react-hooks": "^3.4.2",
     "@types/jest": "^26.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "eslint": "^7.10.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard-with-typescript": "^19.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.4.2",
     "react-test-renderer": "^16.13.1",
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"
   },
   "scripts": {
+    "preinstall": "git config core.hooksPath git-hooks",
     "build": "tsc -b packages/utils packages/core packages/observables",
     "watch": "tsc -b packages/utils packages/core packages/observables -w",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .js,.ts,.tsx"
   }
 }
