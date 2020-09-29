@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "esnext"
+    ],
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "jsx": "react",
+    "declaration": true,
+    "composite": true,
+    "importHelpers": true
+  },
+  "include": [
+    "packages"
+  ],
+  "exclude": [
+    "packages/*/internal",
+    "packages/*/index.*"
+  ]
+}

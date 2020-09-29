@@ -1,0 +1,7 @@
+export { isEqualArray } from './internal/is-equal-array'
+export { isShallowEqual } from './internal/is-shallow-equal'
+export { latency } from './internal/latency'
+export { mergeArrays } from './internal/merge-arrays'
+export { isFunction, isTruthy } from './internal/guards'
+export { deferredFn } from './internal/deferred-fn'
+export type { DeferredMock } from './internal/deferred-fn'

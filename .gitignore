@@ -1,0 +1,9 @@
+/.idea
+
+/**/node_modules
+
+/**/yarn-error.log
+/**/tsconfig.tsbuildinfo
+
+/packages/*/internal
+/packages/*/index.*

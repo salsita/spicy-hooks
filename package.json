@@ -1,0 +1,26 @@
+{
+  "name": "spicy-hooks",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "rxjs": "^6.6.3"
+  },
+  "devDependencies": {
+    "@testing-library/react-hooks": "^3.4.2",
+    "@types/jest": "^26.0.10",
+    "jest": "^26.4.2",
+    "react-test-renderer": "^16.13.1",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "build": "tsc -b packages/utils packages/core packages/observables",
+    "watch": "tsc -b packages/utils packages/core packages/observables -w",
+    "test": "jest"
+  }
+}
