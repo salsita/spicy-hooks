@@ -1,5 +1,5 @@
 {
-  "name": "executable-helpers",
+  "name": "@spicy-hooks/bin",
   "version": "0.0.1-alpha.0",
   "license": "MIT",
   "dependencies": {
