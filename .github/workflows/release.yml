@@ -3,7 +3,7 @@ name: Build, test and release to NPM
 on:
   push:
     tags:
-      - 'v[0-9]+*'
+      - v[0-9]*
 
 jobs:
 
