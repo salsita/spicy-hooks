@@ -1,6 +1,6 @@
 {
   "name": "@spicy-hooks/core",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "license": "MIT",
   "files": [
     "internal",
@@ -8,7 +8,7 @@
     "src"
   ],
   "dependencies": {
-    "@spicy-hooks/utils": "0.0.1-alpha.2",
+    "@spicy-hooks/utils": "0.0.1-alpha.3",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
