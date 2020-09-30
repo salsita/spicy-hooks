@@ -37,6 +37,6 @@
     "watch": "tsc -b packages/utils packages/core packages/observables packages/bin -w",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "spicy": "cross-env node packages/bin/bin.js"
+    "spicy": "cross-env node packages/bin/spicy.js"
   }
 }

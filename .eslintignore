@@ -2,4 +2,4 @@
 
 /packages/*/internal
 /packages/*/index.*
-/packages/bin/bin.*
+/packages/bin/spicy.*
