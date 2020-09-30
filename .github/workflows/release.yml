@@ -60,3 +60,7 @@ jobs:
       - name: Publish `observables` package
         working-directory: ./packages/observables
         run: npm publish --tag ${VERSION_TAG:=latest}
+
+      - name: Publish `bin` package
+        working-directory: ./packages/bin
+        run: npm publish --tag ${VERSION_TAG:=latest}
