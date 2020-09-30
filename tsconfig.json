@@ -16,10 +16,12 @@
     "jsx": "react",
     "declaration": true,
     "composite": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "sourceMap": true
   },
   "include": [
-    "packages"
+    "packages",
+    "bin"
   ],
   "exclude": [
     "packages/*/internal",

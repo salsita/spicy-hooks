@@ -2,3 +2,4 @@
 
 /packages/*/internal
 /packages/*/index.*
+/packages/bin/bin.*
