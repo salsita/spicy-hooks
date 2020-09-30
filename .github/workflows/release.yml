@@ -51,16 +51,16 @@ jobs:
 
       - name: Publish `utils` package
         working-directory: ./packages/utils
-        run: npm publish --tag ${VERSION_TAG:=latest}
+        run: npm publish --access public --tag ${VERSION_TAG:=latest}
 
       - name: Publish `core` package
         working-directory: ./packages/core
-        run: npm publish --tag ${VERSION_TAG:=latest}
+        run: npm publish --access public --tag ${VERSION_TAG:=latest}
 
       - name: Publish `observables` package
         working-directory: ./packages/observables
-        run: npm publish --tag ${VERSION_TAG:=latest}
+        run: npm publish --access public --tag ${VERSION_TAG:=latest}
 
       - name: Publish `bin` package
         working-directory: ./packages/bin
-        run: npm publish --tag ${VERSION_TAG:=latest}
+        run: npm publish --access public --tag ${VERSION_TAG:=latest}
