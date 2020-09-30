@@ -1,7 +1,7 @@
 import { escapeRegExp } from 'lodash'
 
-import { CommandDefinition } from '../types/command-definition'
-import { PackageJsonFile, readAllPackageJsons } from '../types/workspaces'
+import { CommandDefinition } from '../utils/command-definition'
+import { PackageJsonFile, readAllPackageJsons } from '../utils/workspaces'
 
 interface CheckVersionOptions {
   version?: string

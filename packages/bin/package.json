@@ -3,6 +3,7 @@
   "version": "0.0.1-alpha.0",
   "license": "MIT",
   "dependencies": {
+    "@spicy-hooks/utils": "0.0.1-alpha.0",
     "@types/command-line-args": "^5.0.0",
     "@types/fs-extra": "^9.0.1",
     "@types/glob": "^7.1.3",

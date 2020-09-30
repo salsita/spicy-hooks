@@ -1,9 +1,10 @@
-import { CommandDefinition } from './internal/types/command-definition'
-import { checkVersionCommand } from './internal/commands/check-version-command'
-import { typedCommandLineArgs, TypedOptionDefinitions } from './internal/types/typed-command-line-arguments'
+import { CommandDefinition } from './internal/utils/command-definition'
+import { typedCommandLineArgs, TypedOptionDefinitions } from './internal/utils/typed-command-line-arguments'
+import { checkVersionCommand, setVersionCommand } from './internal/commands'
 
 const commandDefinitions: Array<CommandDefinition<any>> = [
-  checkVersionCommand
+  checkVersionCommand,
+  setVersionCommand
 ]
 
 const supportedCommands = commandDefinitions
