@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { config } from 'dotenv'
 
 import { CommandDefinition } from './internal/utils/command-definition'

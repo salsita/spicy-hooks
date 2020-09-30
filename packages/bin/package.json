@@ -20,6 +20,6 @@
     "typescript": "^4.0.3"
   },
   "bin": {
-    "spicy": "bin.js"
+    "spicy": "./bin.js"
   }
 }
