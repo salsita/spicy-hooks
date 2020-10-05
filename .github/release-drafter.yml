@@ -1,0 +1,65 @@
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+categories:
+  - title: '`@spicy-hooks/core` - Breaking changes'
+    labels:
+      - 'CORE breaking'
+  - title: '`@spicy-hooks/core` - Features / enhancements'
+    labels:
+      - 'CORE feature'
+  - title: '`@spicy-hooks/core` - Bug fixes'
+    labels:
+      - 'CORE fix'
+  - title: '`@spicy-hooks/observables` - Breaking changes'
+    labels:
+      - 'OBSERVABLES breaking'
+  - title: '`@spicy-hooks/observables` - Features / enhancements'
+    labels:
+      - 'OBSERVABLES feature'
+  - title: '`@spicy-hooks/observables` - Bug fixes'
+    labels:
+      - 'OBSERVABLES fix'
+  - title: '`@spicy-hooks/bin` - Breaking changes'
+    labels:
+      - 'BIN breaking'
+  - title: '`@spicy-hooks/bin` - Features / enhancements'
+    labels:
+      - 'BIN feature'
+  - title: '`@spicy-hooks/bin` - Bug fixes'
+    labels:
+      - 'BIN fix'
+  - title: '`@spicy-hooks/utils` - Breaking changes'
+    labels:
+      - 'UTILS breaking'
+  - title: '`@spicy-hooks/utils` - Features / enhancements'
+    labels:
+      - 'UTILS feature'
+  - title: '`@spicy-hooks/utils` - Bug fixes'
+    labels:
+      - 'UTILS fix'
+exclude-labels:
+  - 'internal'
+change-template: '- $TITLE (#$NUMBER) @$AUTHOR '
+version-resolver:
+  major:
+    labels:
+      - 'CORE breaking'
+      - 'OBSERVABLES breaking'
+      - 'BIN breaking'
+      - 'UTILS breaking'
+  minor:
+    labels:
+      - 'CORE feature'
+      - 'OBSERVABLES feature'
+      - 'BIN feature'
+      - 'UTILS feature'
+  patch:
+    labels:
+      - 'CORE fix'
+      - 'OBSERVABLES fix'
+      - 'BIN fix'
+      - 'UTILS fix'
+  default: patch
+no-changes-template: '* Internal refactoring only'
+template: |
+  $CHANGES
