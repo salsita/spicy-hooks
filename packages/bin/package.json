@@ -2,7 +2,14 @@
   "name": "@spicy-hooks/bin",
   "version": "0.0.1-alpha.3",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salsita/spicy-hooks.git",
+    "directory": "packages/bin"
+  },
   "dependencies": {
+    "@expo/spawn-async": "^1.5.0",
+    "@octokit/core": "^3.1.2",
     "@spicy-hooks/utils": "0.0.1-alpha.3",
     "@types/command-line-args": "^5.0.0",
     "@types/dotenv": "^8.2.0",

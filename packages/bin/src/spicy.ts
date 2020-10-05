@@ -4,13 +4,14 @@ import { config } from 'dotenv'
 
 import { CommandDefinition } from './internal/utils/command-definition'
 import { typedCommandLineArgs, TypedOptionDefinitions } from './internal/utils/typed-command-line-arguments'
-import { checkVersionCommand, setVersionCommand } from './internal/commands'
+import { checkVersionCommand, prepareReleaseCommand, setVersionCommand } from './internal/commands'
 
 config()
 
 const commandDefinitions: Array<CommandDefinition<any>> = [
   checkVersionCommand,
-  setVersionCommand
+  setVersionCommand,
+  prepareReleaseCommand
 ]
 
 const supportedCommands = commandDefinitions

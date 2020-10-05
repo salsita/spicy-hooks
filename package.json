@@ -2,6 +2,10 @@
   "name": "spicy-hooks",
   "version": "0.0.1-alpha.3",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salsita/spicy-hooks.git"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
@@ -38,5 +42,30 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "spicy": "cross-env node packages/bin/spicy.js"
+  },
+  "changelogs": {
+    "separator": "\n## ",
+    "patterns": [
+      {
+        "pattern": "(.)",
+        "packageName": "spicy-hooks"
+      },
+      {
+        "pattern": "^(## )`@spicy-hooks/core` - ",
+        "packageName": "@spicy-hooks/core"
+      },
+      {
+        "pattern": "^(## )`@spicy-hooks/observables` - ",
+        "packageName": "@spicy-hooks/observables"
+      },
+      {
+        "pattern": "^(## )`@spicy-hooks/bin` - ",
+        "packageName": "@spicy-hooks/bin"
+      },
+      {
+        "pattern": "^(## )`@spicy-hooks/utils` - ",
+        "packageName": "@spicy-hooks/utils"
+      }
+    ]
   }
 }
