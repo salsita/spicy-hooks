@@ -8,7 +8,8 @@ import { PackageJson } from './package-json'
 
 export interface PackageChangelogPattern {
   pattern: string
-  packageName: string
+  packageName?: string
+  file?: string
 }
 
 export interface ChangelogSettings {
@@ -20,8 +21,10 @@ export function readSettings (packageJson: PackageJson) {
   const settings = packageJson.changelogs
   const missingKeys = [
     settings == null && 'changelogs',
-    settings && settings.patterns == null && 'changelogs.sections',
-    settings && settings.separator == null && 'changelogs.separator'
+    settings && settings.patterns == null && 'changelogs.patterns',
+    settings && settings.separator == null && 'changelogs.separator',
+    settings?.patterns?.some(entry => entry.pattern == null) === true && 'changelogs.patterns.pattern',
+    settings?.patterns?.some(entry => entry.file == null && entry.packageName == null) === true && 'changelogs.patterns.(file|packageName)'
   ].filter(isTruthy)
 
   if (missingKeys.length > 0) {
@@ -78,19 +81,17 @@ export async function writeChangelogs (releaseDraft: Release, settings: Changelo
   const sections = splitSections(releaseDraft.body, settings.separator)
 
   await Promise.all(settings.patterns.map(packagePattern => {
-    if (!packagePattern.pattern) {
-      throw new Error('Missing \'pattern\' property for a changelog section')
-    }
-    if (!packagePattern.packageName) {
-      throw new Error('Missing \'packageName\' property for a changelog section')
-    }
     const pattern = new RegExp(packagePattern.pattern)
-
-    const workspacePackage = packagesByName.get(packagePattern.packageName)
-    if (!workspacePackage) {
-      throw new Error(`Invalid package name '${packagePattern.packageName}'`)
+    let filename: string
+    if (packagePattern.packageName != null) {
+      const workspacePackage = packagesByName.get(packagePattern.packageName)
+      if (!workspacePackage) {
+        throw new Error(`Invalid package name '${packagePattern.packageName}'`)
+      }
+      filename = resolve(workspacePackage.path, 'CHANGELOG.md')
+    } else {
+      filename = resolve(workspacePackages[0].path, packagePattern.file!)
     }
-    const filename = resolve(workspacePackage.path, 'CHANGELOG.md')
 
     const text = buildChangelog(sections, pattern)
     return prependChangelog(filename, header, text)
