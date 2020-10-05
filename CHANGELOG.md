@@ -1,3 +1,11 @@
+# v0.1.0
+_Oct 5, 2020_
+
+## `@spicy-hooks/bin` - Features / enhancements
+
+- Allow to specify direct filename for a changelog (#5) @goce-cz
+
+
 # v0.0.1
 _Oct 5, 2020_
 
