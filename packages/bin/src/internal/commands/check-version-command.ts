@@ -1,7 +1,7 @@
 import { escapeRegExp } from 'lodash'
 
 import { CommandDefinition } from '../utils/command-definition'
-import { PackageJsonFile, readAllPackageJsons } from '../utils/workspaces'
+import { WorkspacePackage, readAllPackages } from '../utils/workspaces'
 
 interface CheckVersionOptions {
   version?: string
@@ -9,7 +9,7 @@ interface CheckVersionOptions {
 }
 
 interface VersionOccurrence {
-  packageJson: PackageJsonFile
+  workspacePackage: WorkspacePackage
   path: string[]
   version: string
 }
@@ -24,7 +24,6 @@ export const checkVersionCommand: CommandDefinition<CheckVersionOptions> = {
     },
     root: {
       alias: 'r',
-      multiple: false,
       type: String,
       defaultValue: './'
     }
@@ -34,28 +33,28 @@ export const checkVersionCommand: CommandDefinition<CheckVersionOptions> = {
       console.error('Missing expected version')
       return 1
     }
-    const packageJsons = await readAllPackageJsons(root)
+    const workspacePackages = await readAllPackages(root)
 
-    const packageNames = packageJsons.map(packageJson => packageJson.contents.name)
+    const packageNames = workspacePackages.map(workspacePackage => workspacePackage.packageJson.name)
 
     const occurrences: VersionOccurrence[] = [
-      ...packageJsons
-        .filter(packageJson => packageJson.contents.version != null)
-        .map(packageJson => ({
-          packageJson,
+      ...workspacePackages
+        .filter(workspacePackage => workspacePackage.packageJson.version != null)
+        .map(workspacePackage => ({
+          workspacePackage: workspacePackage,
           path: ['version'],
-          version: packageJson.contents.version!
+          version: workspacePackage.packageJson.version!
         })),
-      ...packageJsons.flatMap(packageJson =>
+      ...workspacePackages.flatMap(workspacePackage =>
         ([
-          ['dependencies', packageJson.contents.dependencies],
-          ['devDependencies', packageJson.contents.devDependencies],
-          ['peerDependencies', packageJson.contents.peerDependencies]
+          ['dependencies', workspacePackage.packageJson.dependencies],
+          ['devDependencies', workspacePackage.packageJson.devDependencies],
+          ['peerDependencies', workspacePackage.packageJson.peerDependencies]
         ] as const)
           .flatMap(([path, deps]) => packageNames
             .filter(packageName => deps && packageName in deps)
             .map(packageName => ({
-              packageJson,
+              workspacePackage: workspacePackage,
               path: [path, packageName],
               version: deps![packageName]
             }))
@@ -69,7 +68,7 @@ export const checkVersionCommand: CommandDefinition<CheckVersionOptions> = {
       invalidOccurrences.forEach(invalidOccurrence => console.error(
         `Expected version ${expectedVersion} differs from actual: ${invalidOccurrence.version} at
   ${invalidOccurrence.path.join('.')} in
-  ${invalidOccurrence.packageJson.file}`
+  ${invalidOccurrence.workspacePackage.path}`
       ))
       return 1
     } else {

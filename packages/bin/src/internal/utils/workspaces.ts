@@ -2,16 +2,16 @@ import { resolve } from 'path'
 import { promisify } from 'util'
 import { glob } from 'glob'
 
-import { PackageJson, readPackageJson } from './package-json'
+import { PackageJson, readPackageJson, writePackageJson } from './package-json'
 
 const globAsync = promisify(glob)
 
-export interface PackageJsonFile {
-  file: string
-  contents: PackageJson
+export interface WorkspacePackage {
+  path: string
+  packageJson: PackageJson
 }
 
-export async function readAllPackageJsons (workspaceRoot: string): Promise<PackageJsonFile[]> {
+export async function readAllPackages (workspaceRoot: string): Promise<WorkspacePackage[]> {
   const rootDir = resolve(workspaceRoot)
   const rootPackageJsonFile = resolve(rootDir, 'package.json')
   const rootPackageJson = await readPackageJson(rootPackageJsonFile)
@@ -22,16 +22,20 @@ export async function readAllPackageJsons (workspaceRoot: string): Promise<Packa
   )
   const workspaces = resolvedPatterns.flat()
 
-  const workspacePackageJsons: PackageJsonFile[] = await Promise.all(workspaces.map(async path => {
+  const workspacePackageJsons: WorkspacePackage[] = await Promise.all(workspaces.map(async path => {
     const file = resolve(path, 'package.json')
     return {
-      file,
-      contents: await readPackageJson(file)
+      path,
+      packageJson: await readPackageJson(file)
     }
   }))
 
   return [
-    { file: rootPackageJsonFile, contents: rootPackageJson },
+    { path: rootDir, packageJson: rootPackageJson },
     ...workspacePackageJsons
   ]
+}
+
+export async function writeAllPackages (workspacePackages: WorkspacePackage[]): Promise<void> {
+  await Promise.all(workspacePackages.map(workspacePackage => writePackageJson(resolve(workspacePackage.path, 'package.json'), workspacePackage.packageJson)))
 }

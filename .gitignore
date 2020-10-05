@@ -8,3 +8,6 @@
 /packages/*/internal
 /packages/*/index.*
 /packages/bin/spicy.*
+
+/**/.env
+/**/.env.*
