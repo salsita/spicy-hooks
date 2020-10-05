@@ -2,6 +2,11 @@
   "name": "@spicy-hooks/observables",
   "version": "0.0.1-alpha.3",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/salsita/spicy-hooks.git",
+    "directory": "packages/observables"
+  },
   "files": [
     "internal",
     "index.*",
