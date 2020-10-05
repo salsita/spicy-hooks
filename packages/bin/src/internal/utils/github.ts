@@ -38,6 +38,5 @@ export async function findLatestReleaseDraft (targetBranchName: string, reposito
     owner,
     repo
   })
-  console.log(JSON.stringify(releases))
   return releases.find(release => release.draft && release.target_commitish === targetBranchName)
 }
