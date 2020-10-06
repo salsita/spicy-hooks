@@ -8,10 +8,11 @@
     "directory": "packages/utils"
   },
   "files": [
-    "internal",
-    "index.*",
+    "lib",
     "src"
   ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "tslib": "^2.0.1"
   },
