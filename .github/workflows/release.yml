@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "Uploading documentation to S3..."
           aws s3 cp --recursive typedoc/ "s3://$AWS_TYPEDOC_BUCKET/$GITHUB_TAG/"
-          echo "Documentation deployed to "https://spicy-hooks.salsita.co/$GITHUB_TAG/"
+          echo "Documentation deployed to https://spicy-hooks.salsita.co/$GITHUB_TAG/"
 
       - name: Initiate NPM credentials
         run: |

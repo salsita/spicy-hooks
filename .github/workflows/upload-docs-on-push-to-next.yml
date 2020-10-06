@@ -41,4 +41,4 @@ jobs:
           run: |
             echo "Uploading documentation to S3..."
             aws s3 sync typedoc/ "s3://$AWS_TYPEDOC_BUCKET/next/" --delete
-            echo "Documentation deployed to "https://spicy-hooks.salsita.co/next/"
+            echo "Documentation deployed to https://spicy-hooks.salsita.co/next/"
