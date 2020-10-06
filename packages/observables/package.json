@@ -8,10 +8,11 @@
     "directory": "packages/observables"
   },
   "files": [
-    "internal",
-    "index.*",
+    "lib",
     "src"
   ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "@spicy-hooks/utils": "0.1.0",
     "@spicy-hooks/core": "0.1.0",

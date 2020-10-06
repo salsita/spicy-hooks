@@ -5,9 +5,7 @@
 /**/yarn-error.log
 /**/tsconfig.tsbuildinfo
 
-/packages/*/internal
-/packages/*/index.*
-/packages/bin/spicy.*
+/packages/*/lib
 
 /**/.env
 /**/.env.*
