@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { escapeRegExp } from 'lodash'
 
 import { CommandDefinition } from '../utils/command-definition'
@@ -16,23 +17,26 @@ interface VersionOccurrence {
 
 export const checkVersionCommand: CommandDefinition<CheckVersionOptions> = {
   command: 'check-version',
+  description: `Checks whether the {bold version} property in {bold package.json} of every workspace package matches the specified value.
+                When a workspace package specifies another one as a dependency, version range of the dependency is checked as well.`,
   options: {
     version: {
       defaultOption: true,
       multiple: false,
-      type: String
+      type: String,
+      typeLabel: '{underline semver}',
+      description: 'Semantic version (i.e. <major>.<minor>.<patch>) expected to appear in all {bold package.json}s'
     },
     root: {
       alias: 'r',
       type: String,
-      defaultValue: './'
+      typeLabel: '{underline path}',
+      defaultValue: './',
+      description: `Path to the root package (i.e. directory where the root {bold package.json} is located)
+                    (defaults to './')`
     }
   },
   execute: async ({ version: expectedVersion, root }) => {
-    if (expectedVersion == null) {
-      console.error('Missing expected version')
-      return 1
-    }
     const workspacePackages = await readAllPackages(root)
 
     const packageNames = workspacePackages.map(workspacePackage => workspacePackage.packageJson.name)
@@ -68,7 +72,7 @@ export const checkVersionCommand: CommandDefinition<CheckVersionOptions> = {
       invalidOccurrences.forEach(invalidOccurrence => console.error(
         `Expected version ${expectedVersion} differs from actual: ${invalidOccurrence.version} at
   ${invalidOccurrence.path.join('.')} in
-  ${invalidOccurrence.workspacePackage.path}`
+  ${resolve(invalidOccurrence.workspacePackage.path, 'package.json')}`
       ))
       return 1
     } else {

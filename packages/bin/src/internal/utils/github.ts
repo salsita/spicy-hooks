@@ -31,8 +31,8 @@ export function getGitHubRepository (packageJson: PackageJson): GitHubRepository
   }
 }
 
-export async function findLatestReleaseDraft (targetBranchName: string, repository: GitHubRepository): Promise<Release | undefined> {
-  const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
+export async function findLatestReleaseDraft (targetBranchName: string, repository: GitHubRepository, token?: string): Promise<Release | undefined> {
+  const octokit = new Octokit({ auth: token })
   const { owner, repo } = repository
   const { data: releases } = await octokit.request('GET /repos/:owner/:repo/releases', {
     owner,
