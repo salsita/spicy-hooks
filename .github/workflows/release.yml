@@ -45,6 +45,23 @@ jobs:
       - name: Test
         run: yarn test
 
+      - name: Build Typedoc
+        run: yarn typedoc --gitRevision $GITHUB_TAG --name "@spicy-hooks $GITHUB_TAG"
+
+      - name: Install awscli
+        run: sudo pip install awscli
+
+      - name: Deploy Typedoc to S3
+        env:
+          AWS_TYPEDOC_BUCKET: ${{ secrets.AWS_TYPEDOC_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+        run: |
+          echo "Uploading documentation to S3..."
+          aws s3 cp --recursive typedoc/ "s3://$AWS_TYPEDOC_BUCKET/$GITHUB_TAG/"
+          echo "Documentation deployed to "https://spicy-hooks.salsita.co/$GITHUB_TAG/"
+
       - name: Initiate NPM credentials
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc

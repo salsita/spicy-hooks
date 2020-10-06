@@ -1,0 +1,44 @@
+name: Upload documentation from `next`
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+
+  deploy:
+      name: Build and upload documentation
+      runs-on: ubuntu-latest
+
+      strategy:
+        matrix:
+          node-version: [14.x]
+
+      steps:
+        - uses: actions/checkout@v2
+
+        - name: Install Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v1
+          with:
+            node-version: ${{ matrix.node-version }}
+
+        - name: Yarn build
+          run: yarn --frozen-lockfile
+
+        - name: Build Typedoc
+          run: yarn typedoc --gitRevision next --name "@spicy-hooks (next)"
+
+        - name: Install awscli
+          run: sudo pip install awscli
+
+        - name: Deploy Typedoc to S3
+          env:
+            AWS_TYPEDOC_BUCKET: ${{ secrets.AWS_TYPEDOC_BUCKET }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          run: |
+            echo "Uploading documentation to S3..."
+            aws s3 sync typedoc/ "s3://$AWS_TYPEDOC_BUCKET/next/" --delete
+            echo "Documentation deployed to "https://spicy-hooks.salsita.co/next/"
