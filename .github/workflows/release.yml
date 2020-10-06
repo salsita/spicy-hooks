@@ -48,6 +48,9 @@ jobs:
       - name: Build Typedoc
         run: yarn typedoc --gitRevision $GITHUB_TAG --name "@spicy-hooks $GITHUB_TAG"
 
+      - name: Redirect references to proper tag
+        run: yarn redirect-refs
+
       - name: Install awscli
         run: sudo pip install awscli
 
