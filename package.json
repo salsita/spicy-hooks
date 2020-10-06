@@ -43,7 +43,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "typedoc": "typedoc packages/core/src/index.ts packages/observables/src/index.ts packages/utils/src/index.ts",
-    "spicy": "cross-env node packages/bin/spicy.js"
+    "redirect-refs": "yarn spicy redirect-refs {packages/**/*.md,typedoc/**/*.html} -b next -p https://spicy-hooks.salsita.co https://github.com/salsita/spicy-hooks/tree https://github.com/salsita/spicy-hooks/blob",
+    "spicy": "cross-env node packages/bin/lib/spicy.js"
   },
   "changelogs": {
     "separator": "\n## ",
