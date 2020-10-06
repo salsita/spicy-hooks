@@ -1,0 +1,15 @@
+{
+  "exclude": [
+    "node_modules"
+  ],
+  "mode": "library",
+  "includes": "./",
+  "excludeExternals": true,
+  "excludeNotExported": true,
+  "excludePrivate": true,
+  "stripInternal": true,
+  "ignoreCompilerErrors": true,
+  "readme": "./docs/typedoc.md",
+  "out": "./typedoc",
+  "tsconfig": "./tsconfig.json"
+}

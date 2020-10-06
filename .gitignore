@@ -6,6 +6,7 @@
 /**/tsconfig.tsbuildinfo
 
 /packages/*/lib
+/typedoc
 
 /**/.env
 /**/.env.*
