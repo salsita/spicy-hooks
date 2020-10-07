@@ -3,6 +3,9 @@
 Redirects any link pointing to the main-branch to a specific ref (by default
 determined by the `version` property of the root `package.json`).
 
+This tool is very useful for versioning of documentation - i.e. links between different
+parts of documentation should lead to the same version.
+
 ## Example
 Assuming the root `package.json` contains `"version": "1.0.1"`, and the main
 branch of the repository is `master`, then running
