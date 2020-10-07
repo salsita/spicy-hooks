@@ -14,7 +14,7 @@ interface PrepareReleasesOptions {
 
 export const prepareReleaseCommand: CommandDefinition<PrepareReleasesOptions> = {
   command: 'prepare-release',
-  description: `Pulls latest release draft linked to the current Git branch from GitHub and:
+  description: `Pulls the latest release draft linked to the current Git branch from GitHub and:
 
                 - distributes changes from the release notes into appropriate change logs
                   (based on {bold changelogs} property within the root {bold package.json}) 

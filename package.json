@@ -48,7 +48,7 @@
   },
   "changelogs": {
     "separator": "\n## ",
-    "patterns": [
+    "mappings": [
       {
         "pattern": "(.)",
         "packageName": "spicy-hooks"
