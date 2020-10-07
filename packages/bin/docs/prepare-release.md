@@ -22,7 +22,7 @@ This property defines how release notes of the latest draft release are parsed a
   ...
 
   "changelogs": {
-    "separator": "\n## ",
+    "separator": "\n(?=## )",
     "mappings": [
       {
         "pattern": "(.)",
@@ -45,8 +45,11 @@ The above example splits the release notes by sections using `\n## ` RegExp as a
 Individual sections are then prepended to target changelogs based on whether the `pattern` RegExp matches the section.
 
 ### `separator`
-A regular expression pattern that identifies individual sections of the release notes.
-Note that the separator is **not** cut off when splitting the release notes.
+A regular expression used to split the release notes into individual sections.
+
+**Important:** Note that standard `String.prototype.split()` is used under the hood,
+therefore if want to keep the separator in the resulting list,
+you need to use the [positive lookahead syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions#Other_assertions) of regular expressions. 
 
 ### `mappings`
 List of mappings between individual sections of release notes and their target changelog file.

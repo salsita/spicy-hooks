@@ -44,11 +44,11 @@ function buildHeader (release: Release) {
   return `# ${release.name}\n_${[versionNumber, date].filter(Boolean).join(' - ')}_`
 }
 
-function buildChangelog (sections: string[], pattern: RegExp) {
+export function buildChangelog (sections: string[], pattern: RegExp) {
   const filteredSections = sections
     .filter(section => pattern.test(section))
     .map(section => section.replace(pattern, (...args) =>
-      args.slice(1, args.length - 3).join('')
+      args.slice(1, args.length - 2).join('')
     ))
 
   if (filteredSections.length > 0) {
@@ -73,7 +73,6 @@ ${previousText}`)
 function splitSections (markdown: string, separator: string) {
   return markdown
     .split(new RegExp(separator))
-    .map((section, index) => index > 0 ? `## ${section}` : section)
 }
 
 export async function writeChangelogs (releaseDraft: Release, settings: ChangelogSettings, workspacePackages: WorkspacePackage[]) {
