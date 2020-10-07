@@ -12,7 +12,8 @@ import { getGitHubRepository } from '../utils/github'
 const globAsync = promisify(glob)
 
 interface RedirectRefsOption {
-  filePattern: string
+  files: string
+  ref?: string
   prefixes: string[]
   'main-branch': string
   root: string
@@ -23,41 +24,82 @@ interface RedirectRefsOption {
 
 export const redirectRefsCommand: CommandDefinition<RedirectRefsOption> = {
   command: 'redirect-refs',
+  description: `Redirects any link pointing to the {bold main-branch} to a specific ref (by default determined by the {bold version} property of the root {bold package.json}).
+
+{bold Example:}
+Assuming the root {bold package.json} contains {bold "version": "1.0.1"}, and the main branch of the repository is {bold master},
+then running
+
+{bold spicy redirect-refs}
+
+will change following links
+
+- https://github.com/owner/repo/tree/{red master}/... -> https://github.com/owner/repo/tree/{green v1.0.1}/...
+- https://github.com/owner/repo/blob/{red master}/... -> https://github.com/owner/repo/blob/{green v1.0.1}/...
+
+in all '.md' and '.html' files in the project. 
+`,
   options: {
-    filePattern: {
+    files: {
       defaultOption: true,
       type: String,
-      defaultValue: '{**/*.md,**/*.html}'
+      typeLabel: '{underline glob}',
+      defaultValue: '{**/*.md,**/*.html}',
+      description: `Glob pattern matching all the files to be redirected
+                    (defaults to {bold \\{**/*.md,**/*.html\\}})`
+    },
+    ref: {
+      multiple: false,
+      type: String,
+      required: false,
+      description: `Target Git ref to be used as a substitution for {bold --main-branch}
+                    (defaults to {bold v<version>} where {bold <version>} is the value of {bold version} property of the root {bold package.json})`
     },
     prefixes: {
       alias: 'p',
       type: String,
-      multiple: true
+      multiple: true,
+      required: false,
+      description: `URL prefixes of the links that should be redirected
+                  (defaults to
+                  - https://github.com/<owner>/<repo>/tree
+                  - https://github.com/<owner>/<repo>/blob
+                  where {bold <owner>} and {bold <repo>} are extracted from the {bold repository} property of the root {bold package.json})`
     },
     'main-branch': {
       defaultValue: 'master',
       alias: 'b',
-      type: String
+      type: String,
+      description: `Name of the branch we are redirecting from
+                    (defaults to {bold master})`
     },
     root: {
       alias: 'r',
+      type: String,
+      typeLabel: '{underline path}',
       defaultValue: './',
-      type: String
+      description: `Path to the root package (i.e. directory where the root {bold package.json} is located)
+                    (defaults to './')`
     },
     ignore: {
       alias: 'i',
       type: String,
-      defaultValue: '**/node_modules/**/*.*'
+      typeLabel: '{underline glob}',
+      defaultValue: '**/node_modules/**/*.*',
+      description: `Glob pattern matching files that should be excluded (previously included by {bold --files})
+                    (defaults to {bold **/node_modules/**/*.*})`
     },
     quiet: {
       alias: 'q',
       type: Boolean,
-      defaultValue: false
+      defaultValue: false,
+      description: 'Suppress any output except for the final count of redirected files'
     },
     verbose: {
       alias: 'v',
       type: Boolean,
-      defaultValue: false
+      defaultValue: false,
+      description: 'Output names of all examined files'
     }
   },
   execute: async (
@@ -65,7 +107,7 @@ export const redirectRefsCommand: CommandDefinition<RedirectRefsOption> = {
       root,
       prefixes,
       'main-branch': mainBranch,
-      filePattern,
+      files,
       ignore,
       quiet,
       verbose
@@ -91,9 +133,9 @@ export const redirectRefsCommand: CommandDefinition<RedirectRefsOption> = {
     const replacePattern = new RegExp(`(${prefixVariants})/${mainBranch}/`, 'g')
     const replaceSubstitution = `$1/${targetRef}/`
 
-    const files = await globAsync(filePattern, { ignore })
+    const resolvedFiles = await globAsync(files, { ignore })
 
-    const redirections = await Promise.all(files.map(async file => {
+    const redirections = await Promise.all(resolvedFiles.map(async file => {
       const content = await readFile(file, 'utf-8')
       const redirectedContent = content.replace(replacePattern, replaceSubstitution)
       if (content !== redirectedContent) {
@@ -109,7 +151,7 @@ export const redirectRefsCommand: CommandDefinition<RedirectRefsOption> = {
       return false
     }))
 
-    console.log(`Redirected ${redirections.filter(Boolean).length} out of ${files.length} files `)
+    console.log(`Redirected ${redirections.filter(Boolean).length} out of ${resolvedFiles.length} files `)
     return 0
   }
 }

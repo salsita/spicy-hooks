@@ -9,16 +9,23 @@ interface SetVersionOptions {
 
 export const setVersionCommand: CommandDefinition<SetVersionOptions> = {
   command: 'set-version',
+  description: `Sets a {bold version} property in {bold package.json} of every workspace package to the specified value.
+                When a workspace package specifies another one as a dependency, version range of the dependency updated as well.`,
   options: {
     version: {
       defaultOption: true,
       multiple: false,
-      type: String
+      type: String,
+      typeLabel: '{underline semver}',
+      description: 'Semantic version (i.e. <major>.<minor>.<patch>) to replace any previous version in all {bold package.json}s'
     },
     root: {
       alias: 'r',
       type: String,
-      defaultValue: './'
+      typeLabel: '{underline path}',
+      defaultValue: './',
+      description: `Path to the root package (i.e. directory where the root {bold package.json} is located)
+                    (defaults to './')`
     }
   },
   execute: async ({ version, root }) => {

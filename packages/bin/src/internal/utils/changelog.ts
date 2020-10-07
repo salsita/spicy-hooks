@@ -6,7 +6,7 @@ import { Release } from './github'
 import { WorkspacePackage } from './workspaces'
 import { PackageJson } from './package-json'
 
-export interface PackageChangelogPattern {
+export interface ChangelogMapping {
   pattern: string
   packageName?: string
   file?: string
@@ -14,17 +14,17 @@ export interface PackageChangelogPattern {
 
 export interface ChangelogSettings {
   separator: string
-  patterns: PackageChangelogPattern[]
+  mappings: ChangelogMapping[]
 }
 
 export function readSettings (packageJson: PackageJson) {
   const settings = packageJson.changelogs
   const missingKeys = [
     settings == null && 'changelogs',
-    settings && settings.patterns == null && 'changelogs.patterns',
+    settings && settings.mappings == null && 'changelogs.mappings',
     settings && settings.separator == null && 'changelogs.separator',
-    settings?.patterns?.some(entry => entry.pattern == null) === true && 'changelogs.patterns.pattern',
-    settings?.patterns?.some(entry => entry.file == null && entry.packageName == null) === true && 'changelogs.patterns.(file|packageName)'
+    settings?.mappings?.some(entry => entry.pattern == null) === true && 'changelogs.mappings.pattern',
+    settings?.mappings?.some(entry => entry.file == null && entry.packageName == null) === true && 'changelogs.mappings.(file|packageName)'
   ].filter(isTruthy)
 
   if (missingKeys.length > 0) {
@@ -44,10 +44,12 @@ function buildHeader (release: Release) {
   return `# ${release.name}\n_${[versionNumber, date].filter(Boolean).join(' - ')}_`
 }
 
-function buildChangelog (sections: string[], pattern: RegExp) {
+export function buildChangelog (sections: string[], pattern: RegExp) {
   const filteredSections = sections
     .filter(section => pattern.test(section))
-    .map(section => section.replace(pattern, '$1'))
+    .map(section => section.replace(pattern, (...args) =>
+      args.slice(1, args.length - 2).join('')
+    ))
 
   if (filteredSections.length > 0) {
     return filteredSections.join('\n')
@@ -71,7 +73,6 @@ ${previousText}`)
 function splitSections (markdown: string, separator: string) {
   return markdown
     .split(new RegExp(separator))
-    .map((section, index) => index > 0 ? `## ${section}` : section)
 }
 
 export async function writeChangelogs (releaseDraft: Release, settings: ChangelogSettings, workspacePackages: WorkspacePackage[]) {
@@ -80,17 +81,17 @@ export async function writeChangelogs (releaseDraft: Release, settings: Changelo
   const header = buildHeader(releaseDraft)
   const sections = splitSections(releaseDraft.body, settings.separator)
 
-  await Promise.all(settings.patterns.map(packagePattern => {
-    const pattern = new RegExp(packagePattern.pattern)
+  await Promise.all(settings.mappings.map(mapping => {
+    const pattern = new RegExp(mapping.pattern)
     let filename: string
-    if (packagePattern.packageName != null) {
-      const workspacePackage = packagesByName.get(packagePattern.packageName)
+    if (mapping.packageName != null) {
+      const workspacePackage = packagesByName.get(mapping.packageName)
       if (!workspacePackage) {
-        throw new Error(`Invalid package name '${packagePattern.packageName}'`)
+        throw new Error(`Invalid package name '${mapping.packageName}'`)
       }
       filename = resolve(workspacePackage.path, 'CHANGELOG.md')
     } else {
-      filename = resolve(workspacePackages[0].path, packagePattern.file!)
+      filename = resolve(workspacePackages[0].path, mapping.file!)
     }
 
     const text = buildChangelog(sections, pattern)
