@@ -1,40 +1,40 @@
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
-  - title: '`@spicy-hooks/core` - Breaking changes'
+  - title: '`core` - Breaking changes'
     labels:
       - 'CORE breaking'
-  - title: '`@spicy-hooks/core` - Features / enhancements'
+  - title: '`core` - Features / enhancements'
     labels:
       - 'CORE feature'
-  - title: '`@spicy-hooks/core` - Bug fixes'
+  - title: '`core` - Bug fixes'
     labels:
       - 'CORE fix'
-  - title: '`@spicy-hooks/observables` - Breaking changes'
+  - title: '`observables` - Breaking changes'
     labels:
       - 'OBSERVABLES breaking'
-  - title: '`@spicy-hooks/observables` - Features / enhancements'
+  - title: '`observables` - Features / enhancements'
     labels:
       - 'OBSERVABLES feature'
-  - title: '`@spicy-hooks/observables` - Bug fixes'
+  - title: '`observables` - Bug fixes'
     labels:
       - 'OBSERVABLES fix'
-  - title: '`@spicy-hooks/bin` - Breaking changes'
+  - title: '`bin` - Breaking changes'
     labels:
       - 'BIN breaking'
-  - title: '`@spicy-hooks/bin` - Features / enhancements'
+  - title: '`bin` - Features / enhancements'
     labels:
       - 'BIN feature'
-  - title: '`@spicy-hooks/bin` - Bug fixes'
+  - title: '`bin` - Bug fixes'
     labels:
       - 'BIN fix'
-  - title: '`@spicy-hooks/utils` - Breaking changes'
+  - title: '`utils` - Breaking changes'
     labels:
       - 'UTILS breaking'
-  - title: '`@spicy-hooks/utils` - Features / enhancements'
+  - title: '`utils` - Features / enhancements'
     labels:
       - 'UTILS feature'
-  - title: '`@spicy-hooks/utils` - Bug fixes'
+  - title: '`utils` - Bug fixes'
     labels:
       - 'UTILS fix'
 exclude-labels:

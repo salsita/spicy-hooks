@@ -55,19 +55,19 @@
         "packageName": "spicy-hooks"
       },
       {
-        "pattern": "^(## )`@spicy-hooks/core` - ",
+        "pattern": "^(## )`core` - ",
         "packageName": "@spicy-hooks/core"
       },
       {
-        "pattern": "^(## )`@spicy-hooks/observables` - ",
+        "pattern": "^(## )`observables` - ",
         "packageName": "@spicy-hooks/observables"
       },
       {
-        "pattern": "^(## )`@spicy-hooks/bin` - ",
+        "pattern": "^(## )`bin` - ",
         "packageName": "@spicy-hooks/bin"
       },
       {
-        "pattern": "^(## )`@spicy-hooks/utils` - ",
+        "pattern": "^(## )`utils` - ",
         "packageName": "@spicy-hooks/utils"
       }
     ]
