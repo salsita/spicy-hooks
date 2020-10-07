@@ -1,4 +1,4 @@
-name: Run CI tests on every PR
+name: Run CI lint and tests on every PR
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   Test:
-    name: Test
+    name: Lint and test
 
     runs-on: ubuntu-latest
 
@@ -27,6 +27,9 @@ jobs:
 
     - name: Yarn build
       run: yarn build
+
+    - name: Lint
+      run: yarn lint --max-warnings=0
 
     - name: Test
       run: yarn test

@@ -3,7 +3,10 @@
     "standard-with-typescript"
   ],
   "plugins": [
-    "import", "react-hooks"
+    "import",
+    "react-hooks",
+    "react",
+    "jest"
   ],
   "parserOptions": {
     "project": [
@@ -65,7 +68,33 @@
           }
         ],
         "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/no-invalid-void-type": "off"
+        "@typescript-eslint/no-invalid-void-type": "off",
+
+        "react/forbid-foreign-prop-types": [
+          "warn",
+          {
+            "allowInPropTypes": true
+          }
+        ],
+        "react/jsx-no-comment-textnodes": "warn",
+        "react/jsx-no-duplicate-props": "warn",
+        "react/jsx-no-target-blank": "warn",
+        "react/jsx-no-undef": "error",
+        "react/jsx-pascal-case": [
+          "warn",
+          {
+            "allowAllCaps": true,
+            "ignore": []
+          }
+        ],
+        "react/no-danger-with-children": "warn",
+        "react/no-direct-mutation-state": "warn",
+        "react/no-is-mounted": "warn",
+        "react/no-typos": "error",
+        "react/require-render-return": "error",
+        "react/style-prop-object": "warn",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
       }
     },
     {
@@ -74,8 +103,18 @@
         "**/*.spec.tsx"
       ],
       "rules": {
-        "@typescript-eslint/no-floating-promises": "off"
+        "@typescript-eslint/no-floating-promises": "off",
+        "jest/expect-expect": "warn",
+        "jest/no-identical-title": "warn",
+        "jest/valid-describe": "warn",
+        "jest/valid-expect": "warn",
+        "jest/valid-expect-in-promise": "warn"
       }
     }
-  ]
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }

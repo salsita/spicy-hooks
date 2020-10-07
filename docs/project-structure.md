@@ -22,7 +22,7 @@ individual packages without endless copying of files.
 |   |   |   |   +-- <compiled-js>
 |   |   |   +-- index.js
 |   |   |   +-- index.d.ts
-|   |   +-- tsconfig.json
+|   |   +-- tsconfig.build.json
 |   |   +-- package.json
 +-- tsconfig.json
 +-- package.json 
@@ -70,10 +70,11 @@ contains compiled `.js` and generated `.d.ts` (typings).
 
 Read more about [building packages](building-packages.md). 
 
-#### `./tsconfig.json`
+#### `./tsconfig.build.json`
 
-TypeScript config that inherits from the root one. It's basically the same for all packages,
-but as has to be replicated in each of them separately as it contains relative paths.
+TypeScript config solely for build purposes. All the configuration is inherited from the root config.
+It's basically the same for all packages (except for dependencies),
+but it has to be replicated in each of them separately as it contains relative paths.
 
 #### `./package.json`
 

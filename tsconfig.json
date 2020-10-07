@@ -20,11 +20,6 @@
     "sourceMap": true
   },
   "include": [
-    "packages",
-    "bin"
-  ],
-  "exclude": [
-    "packages/*/internal",
-    "packages/*/index.*"
+    "packages/*/src"
   ]
 }
