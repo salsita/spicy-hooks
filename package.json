@@ -47,7 +47,7 @@
     "spicy": "cross-env node packages/bin/lib/spicy.js"
   },
   "changelogs": {
-    "separator": "\n## ",
+    "separator": "\n(?=## )",
     "mappings": [
       {
         "pattern": "(.)",
@@ -70,5 +70,19 @@
         "packageName": "@spicy-hooks/utils"
       }
     ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/packages/[^/]*/lib/.*"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/packages/[^/]*/lib/.*"
+    ],
+    "globals": {
+      "tsconfig": "./tsconfig.json"
+    }
   }
 }
