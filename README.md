@@ -4,10 +4,12 @@ Reusable React Hooks of the hottest kind.
 
 ## Packages
 
-* [@spicy-hooks/**core**](packages/core)
-* [@spicy-hooks/**observables**](packages/observables)
-* [@spicy-hooks/**utils**](packages/utils)
-* [@spicy-hooks/**bin**](packages/bin)
+The library is split among multiple packages so that the user can choose only what he needs.
+
+* [@spicy-hooks/**core**](packages/core) - general use hooks extending the built-in set
+* [@spicy-hooks/**observables**](packages/observables) - hooks for easy integration of RxJS into React 
+* [@spicy-hooks/**utils**](packages/utils) - general utility functions and types
+* [@spicy-hooks/**bin**](packages/bin) - release oriented executable helpers
 
 
 ## Contribution

@@ -1,3 +1,8 @@
+/**
+ * [[include:packages/utils/doc/typedoc.md]]
+ *
+ * @packageDocumentation
+ */
 export { isEqualArray } from './internal/is-equal-array'
 export { isShallowEqual } from './internal/is-shallow-equal'
 export { latency } from './internal/latency'

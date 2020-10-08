@@ -19,6 +19,12 @@ is assigned, different part of the SemVer version is incremented:
 * `* feature` - increment minor version
 * any other label - increment patch version
 
+**Important:** The same version is shared across all the packages. This means, that although
+we are following the SemVer conventions, there's no guarantee that an incremented major version
+of a particular package is triggered by a breaking change in that particular package.
+It is guaranteed though, that when the major version doesn't change,
+there has been no breaking change in any of the packages.   
+
 ## Publishing a regular release
 Please follow the below steps when publishing a new release:
 
@@ -90,6 +96,6 @@ To publish a pre-release version, follow the instructions for releasing a hot-fi
 * check the `This is a pre-release` checkbox
 
 Submitting such a release will publish both SDK and CRA template packages to NPM using the
-[`--tag <tag>` switch](https://docs.npmjs.com/cli/publish#description). This will make the packages available under
+[`--tag <tag>` option](https://docs.npmjs.com/cli/publish#description). This will make the packages available under
 `@spicy-hooks/<package>@vM.N.P-<tag>.<tag-version>` or simply `@spicy-hooks/<package>@<tag>` but will not affect the production
 (`latest`) channel.
