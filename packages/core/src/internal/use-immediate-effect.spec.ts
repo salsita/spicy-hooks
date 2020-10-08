@@ -2,8 +2,8 @@ import { renderHook } from '@testing-library/react-hooks'
 
 import { useImmediateEffect } from './use-immediate-effect'
 
-describe('useSyncEffect', () => {
-  it('performs actions synchronously', () => {
+describe('useImmediateEffect', () => {
+  it('performs actions immediately (synchronously)', () => {
     const log: string[] = []
 
     const props = {
