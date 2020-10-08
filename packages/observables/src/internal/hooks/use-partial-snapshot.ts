@@ -1,12 +1,17 @@
 import { DependencyList } from 'react'
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { distinctUntilChanged, map } from 'rxjs/operators'
 import { isShallowEqual } from '@spicy-hooks/utils'
 import { EqualityFunction, useGuaranteedMemo } from '@spicy-hooks/core'
 
 import { Snapshot, useSnapshot } from './use-snapshot'
-import { SynchronousObservable } from '../utils'
 
+/**
+ * Simple unary function that is meant to select sub-part of a state.
+ *
+ * @typeParam S original shape
+ * @typeParam P extracted partial shape
+ */
 export type SelectorFunction<S, P> = (state: S) => P
 
 /**
@@ -19,10 +24,13 @@ export type SelectorFunction<S, P> = (state: S) => P
  * @param observable source observable to subscribe to
  * @param selector function used to select sub-part of the observable state
  * @param deps dependencies for the selector function
+ * @type T type of the source emissions
+ * @type P type of the partial state
+ * @category Hook
  */
-export function usePartialSnapshot<T, P> (observable: SynchronousObservable<T>, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P>
+export function usePartialSnapshot<T, P> (observable: BehaviorSubject<T>, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P>
 export function usePartialSnapshot<T, P> (observable: Observable<T>, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P | null>
-export function usePartialSnapshot<T, P> (observable: SynchronousObservable<T> | undefined | null, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P | null, null>
+export function usePartialSnapshot<T, P> (observable: BehaviorSubject<T> | undefined | null, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P | null, null>
 export function usePartialSnapshot<T, P> (observable: Observable<T> | undefined | null, selector: SelectorFunction<T, P>, deps: DependencyList): Snapshot<P | null, null>
 
 /**
@@ -36,10 +44,13 @@ export function usePartialSnapshot<T, P> (observable: Observable<T> | undefined 
  * @param selector function used to select sub-part of the observable state
  * @param equalityFunc equality function to check whether the selected sub-part actually changed from the previous one
  * @param deps dependencies for the selector function
+ * @type T type of the source emissions
+ * @type P type of the partial state
+ * @category Hook
  */
-export function usePartialSnapshot<T, P> (observable: SynchronousObservable<T>, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P>
+export function usePartialSnapshot<T, P> (observable: BehaviorSubject<T>, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P>
 export function usePartialSnapshot<T, P> (observable: Observable<T>, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P | null>
-export function usePartialSnapshot<T, P> (observable: SynchronousObservable<T> | undefined | null, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P | null, null>
+export function usePartialSnapshot<T, P> (observable: BehaviorSubject<T> | undefined | null, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P | null, null>
 export function usePartialSnapshot<T, P> (observable: Observable<T> | undefined | null, selector: SelectorFunction<T, P>, equalityFunc: EqualityFunction<P>, deps: DependencyList): Snapshot<P | null, null>
 
 export function usePartialSnapshot<T, P> (observable: Observable<T> | undefined | null, selector: SelectorFunction<T, P>, equalityFuncOrDeps: EqualityFunction<P> | DependencyList, possibleDeps?: DependencyList): Snapshot<P | null, null> {

@@ -7,6 +7,9 @@ import { publish } from 'rxjs/operators'
  * to accept new observables.
  *
  * The *hot* observables are emitted, the others not.
+ *
+ * @typeParam T type of both the accepted and emitted observable
+ * @category Operator
  */
 export function concurrentOne<T> (): OperatorFunction<Observable<T>, Observable<T>> {
   return source => new Observable(subscriber => {

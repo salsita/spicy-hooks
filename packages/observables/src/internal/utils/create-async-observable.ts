@@ -1,7 +1,15 @@
 import { Observable } from 'rxjs'
 import { latency } from '@spicy-hooks/utils'
 
-export function createAsyncObservable (value: number, delay: number, log?: string[]) {
+/**
+ * Create a dummy async observable that emits a single `value` after the specified `delay` and then completes.
+ *
+ * @param value the value to emit or `-1` to throw an exception instead
+ * @param delay delay in milliseconds before the observable should emit
+ * @param log optional string array where a simple log messages get appended as the flow of the observable proceeds
+ * @category Test Helper
+ */
+export function createAsyncObservable (value: number, delay: number, log?: string[]): Observable<number> {
   return new Observable<number>(subscriber => {
     log?.push(`start ${value}`)
     latency(delay).then(() => {

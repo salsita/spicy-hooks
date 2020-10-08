@@ -7,11 +7,13 @@ import { multicast } from 'rxjs/operators'
  * * the source observable is immediately unsubscribed from
  * * the re-emitted hot observable is completed or failed (if `cancelError` is specified and different from `undefined`)
  *
- * The observables re-emitted immediately as *hot*.
+ * The observables are re-emitted immediately as *hot*.
  *
  * **Warning:** The source observable is always subscribed to, therefore this concurrency strategy cannot prevent eventual side-effects when cancelling.
  *
  * @param cancelError when provided the re-emitted observable will throw the provided error instead of completing when it is cancelled
+ * @typeParam T type of both the accepted and emitted observable
+ * @category Operator
  */
 export function concurrentLatest<T> (cancelError?: any): OperatorFunction<Observable<T>, Observable<T>> {
   return source => new Observable(subscriber => {

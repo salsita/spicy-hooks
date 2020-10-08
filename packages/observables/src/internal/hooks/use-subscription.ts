@@ -9,6 +9,8 @@ import { DependencyList, useEffect } from 'react'
  * @param observable source observable to subscribe to
  * @param observer observer to subscribe with
  * @param deps dependencies of the observer
+ * @typeParam T type of the emission of the observable we are subscribing to
+ * @category Hook
  */
 export function useSubscription<T> (observable: Observable<T> | null | undefined, observer: PartialObserver<T> | null | undefined, deps: DependencyList) {
   useEffect(

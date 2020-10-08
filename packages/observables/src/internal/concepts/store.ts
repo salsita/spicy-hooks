@@ -5,7 +5,7 @@ import { SimpleSubscribable, Updatable } from '../utils'
 /**
  * Subject-like object whose state can be updated.
  *
- * @stable
+ * @typeParam T type of the state
  */
 export interface UpdatableSubscribable<T> extends Updatable<T>, SimpleSubscribable<T> {
 }
@@ -13,9 +13,12 @@ export interface UpdatableSubscribable<T> extends Updatable<T>, SimpleSubscribab
 /**
  * Base class for every RxJS store.
  *
- * @stable
+ * @typeParam T type of the store's state
  */
 export class Store<T> extends BehaviorSubject<T> implements UpdatableSubscribable<T> {
+  /**
+   * @inheritDoc
+   */
   update (updater: (prev: T) => T): T {
     const originalValue = this.getValue()
     const newValue = updater(originalValue)
