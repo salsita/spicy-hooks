@@ -11,5 +11,6 @@
   "ignoreCompilerErrors": true,
   "readme": "./docs/typedoc.md",
   "out": "./typedoc",
-  "tsconfig": "./tsconfig.json"
+  "tsconfig": "./tsconfig.json",
+  "theme": "minimal"
 }
