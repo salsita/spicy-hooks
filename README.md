@@ -1,6 +1,6 @@
 # @spicy-hooks
 
-**Reusable React Hooks of the hottest kind.**
+Reusable React Hooks of the hottest kind.
 
 ## Packages
 

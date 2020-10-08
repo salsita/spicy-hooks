@@ -13,7 +13,9 @@ If you had, you must have faced at least the following questions:
 * How to keep logic at least a bit separated from components?
      
 Our answer to those questions come in the form of `@spicy-hooks/observables` package.
-The 
+
+This package is a part of [the `@spicy-hooks` family](https://github.com/salsita/spicy-hooks).
+Be sure to checkout the other interesting packages we offer.
 
 ## Concept
 

@@ -17,7 +17,7 @@ Be sure to checkout the other interesting packages we offer.
 
 ## Installation
 
-Just use the regular way:
+Just use the usual way:
 ```shell script
 npm install @spicy-hooks/core --save
 ```
