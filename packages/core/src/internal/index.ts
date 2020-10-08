@@ -1,5 +1,6 @@
 export { useCombinedRef } from './use-combined-ref'
 export { createUseDependencies } from './use-dependencies'
+export type { OverrideComponent, UseDependencies } from './use-dependencies'
 export { useComputedRef } from './use-computed-ref'
 export { createUseContext } from './use-context'
 export type { UseContext } from './use-context'
