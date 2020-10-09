@@ -65,6 +65,9 @@ for accurate information.
 It is guaranteed though, that when the major version doesn't change,
 there has been no breaking change in this package.
 
+**Warning:** The `internal` folder is excluded from any semantic versioning conventions.
+Importing from this folder directly is strongly discouraged.
+
 ## Issues
 
 Please submit any issue or feature request on [the main project](https://github.com/salsita/spicy-hooks/issues). _(issue templates coming soon)_
