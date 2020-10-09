@@ -10,6 +10,7 @@ const versionPattern = /^v(.+)$/
 interface PrepareReleasesOptions {
   root: string
   token?: string
+  branch?: string
 }
 
 export const prepareReleaseCommand: CommandDefinition<PrepareReleasesOptions> = {
@@ -40,10 +41,17 @@ export const prepareReleaseCommand: CommandDefinition<PrepareReleasesOptions> = 
       defaultValue: './',
       description: `Path to the root package (i.e. directory where the root {bold package.json} is located)
                     (defaults to {bold './'})`
+    },
+    branch: {
+      alias: 'b',
+      type: String,
+      required: false,
+      description: `Name of the branch that is being released and that is linked to the release draft
+                    (defaults to current Git branch)`
     }
   },
-  execute: async ({ root, token }) => {
-    const branchName = await getCurrentBranchName()
+  execute: async ({ root, branch, token }) => {
+    const branchName = branch ?? await getCurrentBranchName()
     const workspacePackages = await readAllPackages(root)
     const rootPackage = workspacePackages[0]
 
