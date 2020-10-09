@@ -36,7 +36,7 @@ export enum SnapshotState {
  * @typeParam T type of the emitted value
  * @typeParam S `null` determines that state is nullable, the only only other acceptable type is `never`
  */
-export type Snapshot<T, S extends never | null = never> = [value: T, state: SnapshotState | S, error: Error | any | null]
+export type Snapshot<T, S extends never | null = never> = [T, SnapshotState | S, Error | any | null]
 
 const WaitingSymbol = Symbol('waiting for observable to emit')
 

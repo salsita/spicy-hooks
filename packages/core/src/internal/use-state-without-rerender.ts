@@ -30,7 +30,7 @@ interface ValueHolder<T> {
  * @typeParam S type of the state value
  * @category Hook
  */
-export function useStateWithoutRerender<S> (initialValue: S | (() => S)): [value: S, setValue: Dispatch<SetStateAction<S>>, silentlySetValue: Dispatch<SetStateAction<S>>] {
+export function useStateWithoutRerender<S> (initialValue: S | (() => S)): [S, Dispatch<SetStateAction<S>>, Dispatch<SetStateAction<S>>] {
   const [holder, setHolder] = useState<ValueHolder<S>>(
     isFunction(initialValue)
       ? () => ({ value: initialValue() })
