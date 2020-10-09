@@ -63,7 +63,7 @@ export const prepareReleaseCommand: CommandDefinition<PrepareReleasesOptions> = 
     const settings = readSettings(rootPackage.packageJson)
 
     await setVersion(version, workspacePackages)
-    await writeChangelogs(draft, settings, workspacePackages)
+    await writeChangelogs(draft, settings, rootPackage.path)
     await writeAllPackages(workspacePackages)
 
     console.log(`Release ${draft.name} prepared for publishing... commit and push your changes!`)

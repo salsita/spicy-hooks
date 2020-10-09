@@ -3,13 +3,11 @@ import { existsSync, readFile, writeFile } from 'fs-extra'
 import { isTruthy } from '@spicy-hooks/utils'
 
 import { Release } from './github'
-import { WorkspacePackage } from './workspaces'
 import { PackageJson } from './package-json'
 
 export interface ChangelogMapping {
   pattern: string
-  packageName?: string
-  file?: string
+  file: string
 }
 
 export interface ChangelogSettings {
@@ -24,7 +22,7 @@ export function readSettings (packageJson: PackageJson) {
     settings && settings.mappings == null && 'changelogs.mappings',
     settings && settings.separator == null && 'changelogs.separator',
     settings?.mappings?.some(entry => entry.pattern == null) === true && 'changelogs.mappings.pattern',
-    settings?.mappings?.some(entry => entry.file == null && entry.packageName == null) === true && 'changelogs.mappings.(file|packageName)'
+    settings?.mappings?.some(entry => entry.file == null) === true && 'changelogs.mappings.file'
   ].filter(isTruthy)
 
   if (missingKeys.length > 0) {
@@ -75,24 +73,13 @@ function splitSections (markdown: string, separator: string) {
     .split(new RegExp(separator))
 }
 
-export async function writeChangelogs (releaseDraft: Release, settings: ChangelogSettings, workspacePackages: WorkspacePackage[]) {
-  const packagesByName = new Map(workspacePackages.map(workspacePackage => [workspacePackage.packageJson.name, workspacePackage]))
-
+export async function writeChangelogs (releaseDraft: Release, settings: ChangelogSettings, rootPath: string) {
   const header = buildHeader(releaseDraft)
   const sections = splitSections(releaseDraft.body, settings.separator)
 
   await Promise.all(settings.mappings.map(mapping => {
     const pattern = new RegExp(mapping.pattern)
-    let filename: string
-    if (mapping.packageName != null) {
-      const workspacePackage = packagesByName.get(mapping.packageName)
-      if (!workspacePackage) {
-        throw new Error(`Invalid package name '${mapping.packageName}'`)
-      }
-      filename = resolve(workspacePackage.path, 'CHANGELOG.md')
-    } else {
-      filename = resolve(workspacePackages[0].path, mapping.file!)
-    }
+    const filename = resolve(rootPath, mapping.file)
 
     const text = buildChangelog(sections, pattern)
     return prependChangelog(filename, header, text)

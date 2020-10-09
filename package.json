@@ -52,23 +52,23 @@
     "mappings": [
       {
         "pattern": "(.)",
-        "packageName": "spicy-hooks"
+        "file": "CHANGELOG.md"
       },
       {
         "pattern": "^(## )`core` - ",
-        "packageName": "@spicy-hooks/core"
+        "file": "packages/core/CHANGELOG.md"
       },
       {
         "pattern": "^(## )`observables` - ",
-        "packageName": "@spicy-hooks/observables"
+        "file": "packages/observables/CHANGELOG.md"
       },
       {
         "pattern": "^(## )`bin` - ",
-        "packageName": "@spicy-hooks/bin"
+        "file": "packages/bin/CHANGELOG.md"
       },
       {
         "pattern": "^(## )`utils` - ",
-        "packageName": "@spicy-hooks/utils"
+        "file": "packages/utils/CHANGELOG.md"
       }
     ]
   },
