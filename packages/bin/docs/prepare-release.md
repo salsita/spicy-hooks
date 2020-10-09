@@ -19,18 +19,16 @@ This property defines how release notes of the latest draft release are parsed a
 
 ```json
 {
-  ...
-
   "changelogs": {
     "separator": "\n(?=## )",
     "mappings": [
       {
         "pattern": "(.)",
-        "packageName": "project-package"
+        "file": "CHANGELOG.md"
       },
       {
         "pattern": "^(## ) Package A - ",
-        "packageName": "package-a"
+        "file": "packages/package-a/CHANGELOG.md"
       },
       {
         "pattern": "^(## ) Package B - ",
@@ -60,12 +58,8 @@ A regular expression pattern that selects sections which should go into the targ
 **Important:** Note that the matching string is by default stripped of the text appended to the changelog.
 To make selected parts preserved, wrap them into a RegExp capture group (`(preserved) stripped`).
  
-#### `packageName` or `file`
-You can either specify a direct path to a concrete changelog by using the `file` or let the tool infer
-the location from a `packageName`.
-
-For example specifying `"packageName": "package-a"` will make the tool find a workspace package with a name `package-a`
-and use `<package-directory>/CHANGELOG.md` as the target changelog file.
+#### `file`
+Path to a target changelog that should be prepended with the matching sections.
  
 ## Synopsis
 
