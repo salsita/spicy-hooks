@@ -12,7 +12,7 @@ import { useRef } from 'react'
  * @param value value to be cached
  * @param isAvailable optional custom boolean flag to determine "availability"
  * @returns either cached or the provided `value`, based on availability
- * @typeParam type of the cached value
+ * @typeParam T type of the cached value
  * @category Hook
  */
 export function useLastAvailable<T> (value: T, isAvailable = value != null): T {

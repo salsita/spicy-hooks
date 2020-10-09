@@ -9,7 +9,7 @@ import { useSingleton } from '@spicy-hooks/core'
  * Both values of the returned tuple are identity stable.
  *
  * @param initialValue initial value for the returned `BehaviorSubject` or a factory that generates that value
- * @typeParam type of the state value
+ * @typeParam S type of the state value
  * @returns a tuple of `BehaviorSubject` and a callback used to change the - or better to say to emit a new - state
  * @category Hook
  */

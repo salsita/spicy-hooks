@@ -4,14 +4,15 @@ import { take } from 'rxjs/operators'
 /**
  * An extension to `jest.Mock<T,Y>` that allows waiting for asynchronous calls.
  *
- * @stable
+ * @typeParam T return type of the mock implementation
+ * @typeParam Y argument types of the mock implementation
  */
 export interface DeferredMock<T = any, Y extends any[] = any> extends jest.Mock<T, Y> {
   /**
    * Wait for next call to the mocked function.
    *
    * @param timeout maximum amount of milliseconds to wait for the call before throwing a time-out exception (default is ˙300˙)
-   * @returns promise of this mock function
+   * @returns promise of this mock function for each
    */
   afterNextCall: (timeout?: number) => Promise<DeferredMock<T, Y>>
   /**
@@ -32,9 +33,9 @@ export function deferredFn<T, Y extends any[]> (implementation?: (...args: Y) =>
  *
  * @param implementation mocked implementation of the function
  * @returns enhanced mock object with [[DeferredMock.afterNextCall]] and [[DeferredMock.afterNthCall]] methods
- * @typeparam T return type of the mock implementation
- * @typeparam Y argument types of the mock implementation
- * @stable
+ * @typeParam T return type of the mock implementation
+ * @typeParam Y argument types of the mock implementation
+ * @category Test Helper
  */
 export function deferredFn<T, Y extends any[]> (implementation?: (...args: Y) => T): DeferredMock<T, Y> {
   const callSubject = new Subject<T>()
