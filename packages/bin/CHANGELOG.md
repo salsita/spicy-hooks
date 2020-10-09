@@ -1,3 +1,20 @@
+# v1.0.0
+_Oct 9, 2020_
+
+## Breaking changes
+
+- Simplify configuration of `prepare-release` command (#18) @goce-cz 
+- Improvements, fixes and documentation for the `bin` package (#10) @goce-cz 
+
+## Features / enhancements
+
+- Add `redirect-refs` command (#9) @goce-cz 
+
+## Bug fixes
+
+- Group all compiled output in `lib` folder (#6) @goce-cz 
+
+
 # v0.1.0
 _Oct 5, 2020_
 
