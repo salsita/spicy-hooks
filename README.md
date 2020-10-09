@@ -4,7 +4,7 @@ Reusable React Hooks of the hottest kind.
 
 ## Packages
 
-The library is split among multiple packages so that the user can choose only what he needs.
+The library is split among multiple packages so that the users can choose what they really need.
 
 * [@spicy-hooks/**core**](packages/core) - general use hooks extending the built-in set
 * [@spicy-hooks/**observables**](packages/observables) - hooks for easy integration of RxJS into React 
