@@ -1,3 +1,15 @@
+# v1.0.1
+_Oct 9, 2020_
+
+## `core` - Bug fixes
+
+- Remove labeled tuples for improved compatibility with older TS versions (#20) @goce-cz 
+
+## `observables` - Bug fixes
+
+- Remove labeled tuples for improved compatibility with older TS versions (#20) @goce-cz
+
+
 # v1.0.0
 _Oct 9, 2020_
 
