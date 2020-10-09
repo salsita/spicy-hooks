@@ -6,6 +6,9 @@ import { publish } from 'rxjs/operators'
  * Any further emitted observable replaces the previously queued one.
  *
  * The observables are emitted as soon as they become *hot*.
+ *
+ * @typeParam T type of both the accepted and emitted observable
+ * @category Operator
  */
 export function concurrentOneAndLatest<T> (): OperatorFunction<Observable<T>, Observable<T>> {
   return source => new Observable(subscriber => {

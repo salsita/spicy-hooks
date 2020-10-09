@@ -1,5 +1,9 @@
 import { useRef } from 'react'
 
+/**
+ * A simple function that should return `true` if the two arguments are considered equal, `false` otherwise.
+ * The requirements for "equality" are entirely up to the implementation.
+ */
 export type EqualityFunction<T> = (prev: T, next: T) => boolean
 
 /**
@@ -10,6 +14,9 @@ export type EqualityFunction<T> = (prev: T, next: T) => boolean
  *
  * @param value value that is expected to change
  * @param equalityFn function to evaluate whether the value changed
+ * @typeParam T type of the observed value
+ * @returns `1` based running version of the value
+ * @category Hook
  */
 export function useValueVersion<T> (value: T, equalityFn: EqualityFunction<T>): number {
   const versionRef = useRef(1)

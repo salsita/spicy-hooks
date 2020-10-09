@@ -1,7 +1,5 @@
 export { createAsyncObservable } from './create-async-observable'
 export { getSynchronousEmit } from './get-synchronous-emit'
 export { isBehaviorSubject } from './guards'
-export { GuaranteedSynchronousObservable } from './types'
-export type { SynchronousObservable } from './types'
 export type { SimpleSubscribable } from './simple-subscribable'
 export type { Updatable } from './updatable'

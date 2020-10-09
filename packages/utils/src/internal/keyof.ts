@@ -25,6 +25,8 @@
  * type ModifiableKey1 = KeyOf<Person, 'name' | 'title'>; // all OK
  * type ModifiableKey2 = KeyOf<Person, 'name' | 'title' | 'citizenship'>; // TS2344: Type '"name" | "title" | "citizenship"' does not satisfy...
  * ```
- * @stable
+ *
+ * @typeParam R record containing the properties
+ * @typeParam T selected key(s) of `R`
  */
 export type KeyOf<R extends Record<any, any>, T extends keyof R = keyof R> = T

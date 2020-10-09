@@ -4,7 +4,10 @@ const EmptySymbol = Symbol('empty')
 
 /**
  * Allocates a ref and initializes it with a computed value.
+ *
  * @param factory the factory is used during the initial render only to compute the ref's value
+ * @typeParam T type of the generated value
+ * @category Hook
  */
 export function useComputedRef<T> (factory: () => T): MutableRefObject<T> {
   const ref = useRef<T | typeof EmptySymbol>(EmptySymbol)

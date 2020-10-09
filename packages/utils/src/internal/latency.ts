@@ -4,7 +4,7 @@
  * @param minTimeout minimum number of milliseconds to wait
  * @param maxTimeout maximum number of milliseconds to wait
  * @param logMessage this message when provided, will be logged into the console along with the actual delay
- * @stable
+ * @category Test Helper
  */
 export function latency (minTimeout: number, maxTimeout: number, logMessage?: string): Promise<void>
 /**
@@ -12,7 +12,7 @@ export function latency (minTimeout: number, maxTimeout: number, logMessage?: st
  *
  * @param timeout number of milliseconds to wait
  * @param logMessage this message when provided, will be logged into the console along with the actual delay
- * @stable
+ * @category Test Helper
  */
 export function latency (timeout: number, logMessage?: string): Promise<void>
 

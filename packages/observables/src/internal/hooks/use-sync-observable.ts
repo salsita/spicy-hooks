@@ -12,10 +12,13 @@ export function useSyncObservable<T> (observable: BehaviorSubject<T> | null | un
 export function useSyncObservable<T> (observable: Observable<T> | null | undefined, defaultValue: T): BehaviorSubject<T> | null
 
 /**
+ * TODO Needs more love: https://github.com/salsita/spicy-hooks/issues/13
  * Converts the provided observable into a `BehaviorSubject`.
  * If the source observable is synchronous, its next emission will be immediately available through `getValue()` method of the returned `BehaviorSubject`.
  * @param observable source observable
  * @param defaultValue default value to be provided through `getValue()` until the source observable emits
+ * @typeParam T type of the value emitted by the source observable
+ * @category Hook
  */
 export function useSyncObservable<T> (observable: Observable<T> | null | undefined, defaultValue: T | null = null): BehaviorSubject<T | null> | null {
   const subject = useGuaranteedMemo(

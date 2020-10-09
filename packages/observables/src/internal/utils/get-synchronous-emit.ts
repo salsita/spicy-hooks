@@ -6,6 +6,10 @@ const EmptySymbol = Symbol('empty')
  * Retrieves next emit of an observable in a synchronous operation.
  * Fails if the observable throws an exception, if it completes before emitting
  * or if it is not synchronous.
+ *
+ * @param observable source observable to get a synchronous emit from
+ * @typeParam T type of the observable value
+ * @category Test Helper
  */
 export function getSynchronousEmit<T> (observable: Observable<T>): T {
   let value: T | typeof EmptySymbol = EmptySymbol

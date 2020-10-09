@@ -3,7 +3,10 @@ import { isEqualArray } from './is-equal-array'
 /**
  * Checks whether the values are shallowly equal. Supports primitives, arrays and objects.
  *
- * @stable
+ * @param objectA first value to compare
+ * @param objectB second value to compare
+ * @typeParam T type of both objects
+ * @category Comparison
  */
 export function isShallowEqual<T> (objectA: T, objectB: T): boolean {
   if (Object.is(objectA, objectB)) {

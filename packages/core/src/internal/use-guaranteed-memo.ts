@@ -12,6 +12,11 @@ import { isEqualArray } from '@spicy-hooks/utils'
  * **Note:** You should not blindly replace all usages of `useMemo` with this hook.
  * The `useGuaranteedMemo` should be used only in scenarios where re-calculating the memoized
  * value would cause issues.
+ *
+ * @param factory factory to generate the value that is to be memoized
+ * @param deps array of dependencies for the factory (if any of them changes, the memoized value is dropped and a new one is generated)
+ * @typeParam T type of the memoized value
+ * @category Hook
  */
 export function useGuaranteedMemo<T> (factory: () => T, deps: DependencyList): T {
   const lastDepsRef = useRef<DependencyList>()

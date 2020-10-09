@@ -4,7 +4,6 @@
  * for actually performing the deferred action.
  *
  * @param I the actual type of the intention function
- * @stable
  */
 export interface Intent<I extends Function | undefined = (() => void) | undefined> {
   /**

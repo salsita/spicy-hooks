@@ -13,6 +13,11 @@ import { useGuaranteedMemo } from './use-guaranteed-memo'
  * **Note:** You should not blindly replace all usages of `useCallback` with this hook.
  * The `useGuaranteedCallback` should be used only in scenarios where re-calculating the memoized
  * value would cause issues.
+ *
+ * @param callback the callback function to be memoized
+ * @param deps dependencies for the callback (if any of them changes, the memoized callback is dropped and an recent one is stored)
+ * @typeParam F type of the callback function
+ * @category Hook
  */
 export function useGuaranteedCallback<F extends Function> (callback: F, deps: DependencyList): F {
   return useGuaranteedMemo(() => callback, deps)

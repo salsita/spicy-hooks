@@ -1,7 +1,7 @@
 /**
  * An object whose internal state can be updated.
  *
- * @stable
+ * @typeParam T type of the internal state
  */
 export interface Updatable<T> {
   /**

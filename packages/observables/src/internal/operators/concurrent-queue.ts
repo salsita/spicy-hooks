@@ -5,6 +5,9 @@ import { publish } from 'rxjs/operators'
  * Queues all incoming observable and turns each of them *hot* after the previous completes.
  *
  * The observables are emitted as soon as they become *hot*.
+ *
+ * @typeParam T type of both the accepted and emitted observable
+ * @category Operator
  */
 export function concurrentQueue<T> (): OperatorFunction<Observable<T>, Observable<T>> {
   return source => new Observable(subscriber => {

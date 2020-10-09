@@ -26,8 +26,11 @@ interface ValueHolder<T> {
  * lets you reset the state when dependencies change while making sure that UI and app states are in sync.
  *
  * @param initialValue initial value or a function returning it
+ * @returns [value, setValue, silentlySetValue]
+ * @typeParam S type of the state value
+ * @category Hook
  */
-export function useStateWithoutRerender<S> (initialValue: S | (() => S)): [S, Dispatch<SetStateAction<S>>, Dispatch<SetStateAction<S>>] {
+export function useStateWithoutRerender<S> (initialValue: S | (() => S)): [value: S, setValue: Dispatch<SetStateAction<S>>, silentlySetValue: Dispatch<SetStateAction<S>>] {
   const [holder, setHolder] = useState<ValueHolder<S>>(
     isFunction(initialValue)
       ? () => ({ value: initialValue() })

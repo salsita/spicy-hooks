@@ -8,6 +8,8 @@ import { EqualityFunction, useValueVersion } from './use-value-version'
  *
  * @param value value that is expected to change
  * @param equalityFn function to evaluate whether the value changed
+ * @typeParam T type of the interned value
+ * @category Hook
  */
 export function useInternedValue<T> (value: T, equalityFn: EqualityFunction<T>): T {
   const version = useValueVersion(value, equalityFn)
