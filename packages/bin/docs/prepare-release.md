@@ -64,7 +64,7 @@ Path to a target changelog that should be prepended with the matching sections.
 ## Synopsis
 
 ```shell script
-spicy prepare-release [--token <github-token>] [--root path]
+spicy prepare-release [--token <github-token>] [--root path] [--branch string]
 ```
 
 ```shell script
@@ -80,6 +80,10 @@ spicy prepare-release --help
 * `-r, --root path`
     * Path to the root package (i.e. directory where the root `package.json` is located)
     * (defaults to `./`)
+                         
+* `-b, --branch string`
+    * Name of the branch that is being released and that is linked to the release draft
+    * (defaults to current Git branch)
     
 * `-h, --help`
     * Display usage guide
