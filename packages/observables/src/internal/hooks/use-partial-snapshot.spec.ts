@@ -1,7 +1,9 @@
 import { Subject } from 'rxjs'
 import { act, renderHook } from '@testing-library/react-hooks'
+import { isShallowEqual } from '@spicy-hooks/utils'
 
 import { usePartialSnapshot } from './use-partial-snapshot'
+import { Snapshot } from './use-snapshot'
 
 interface Shape {
   a: string
@@ -44,25 +46,61 @@ describe('usePartialSnapshot', () => {
     expect(result.current[0]).toBe('B')
   })
 
-  it('ignores changes in other sub-set of a shallow state', () => {
+  const reRendersWhenUpdated = (renderHookCallback: () => Snapshot<any>, updatedState: Shape) => {
     const renderCounter = jest.fn()
 
-    const { result } = renderHook(() => {
+    renderHook(() => {
       renderCounter()
-      return usePartialSnapshot(subject, state => state.a, [])
+      return renderHookCallback()
     })
 
     act(() => {
       subject.next(sample)
     })
-    expect(result.current[0]).toBe('A')
-    expect(renderCounter).toBeCalledTimes(2)
+
+    const previousCallCount = renderCounter.mock.calls.length
+    expect(previousCallCount).toBe(2)
 
     act(() => {
-      subject.next({ ...sample, b: 2 })
+      subject.next(updatedState)
     })
-    expect(renderCounter).toBeCalledTimes(2)
-    expect(result.current[0]).toBe('A')
+
+    const newCalls = renderCounter.mock.calls.length - previousCallCount
+    expect(newCalls).toBeGreaterThanOrEqual(0)
+    expect(newCalls).toBeLessThanOrEqual(1)
+
+    return newCalls > 0
+  }
+
+  it('ignores changes in other sub-set of the state', () => {
+    expect(reRendersWhenUpdated(
+      () => usePartialSnapshot(subject, state => state.a, []),
+      { ...sample, b: 2 }
+    )).toBe(false)
+  })
+
+  it('triggers rerender for deep equal yet not identical objects', () => {
+    expect(reRendersWhenUpdated(
+      () => usePartialSnapshot(subject, state => state.c, []),
+      {
+        ...sample,
+        c: {
+          x: true,
+          y: 'z'
+        }
+      })).toBe(true)
+  })
+
+  it('respects provided equality function when deciding about re-rendering', () => {
+    expect(reRendersWhenUpdated(
+      () => usePartialSnapshot(subject, state => state.c, isShallowEqual, []),
+      {
+        ...sample,
+        c: {
+          x: true,
+          y: 'z'
+        }
+      })).toBe(false)
   })
 })
 
