@@ -1,7 +1,7 @@
 import React, { createContext, FunctionComponent, useContext, useMemo } from 'react'
 import { isFunction, isShallowEqual } from '@spicy-hooks/utils'
 
-import { useInternedValue } from './use-interned-value'
+import { useDistinctValue } from './use-distinct-value'
 
 /**
  * A `Provider` like component through which you can override selected dependencies.
@@ -77,8 +77,8 @@ export function createUseDependencies<T extends Record<string, any>> (defaultsOr
     const parentHolder = useContext(context)
     const parentValues = materializeValues(parentHolder)
     const mergedValues = { ...parentValues, ...values }
-    const internedValues = useInternedValue(mergedValues, isShallowEqual)
-    const newHolder = useMemo(() => ({ values: internedValues }), [internedValues])
+    const distinctValues = useDistinctValue(mergedValues, isShallowEqual)
+    const newHolder = useMemo(() => ({ values: distinctValues }), [distinctValues])
     return <context.Provider value={newHolder}>{children}</context.Provider>
   }
 
