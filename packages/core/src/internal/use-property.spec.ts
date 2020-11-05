@@ -28,7 +28,7 @@ describe('useProperty', () => {
     expect(result.current[0]).toBe(3)
   })
 
-  it('reports proper value after external change in other the properties', () => {
+  it('reports proper value after external change in other properties', () => {
     const { result } = renderHook(() => {
       const [object, setObject] = useState({ a: 'a', b: 1 })
       return [...useProperty(object, setObject, 'b'), setObject] as const
