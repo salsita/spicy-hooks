@@ -1,9 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { isShallowEqual } from '@spicy-hooks/utils'
 
-import { useInternedValue } from './use-interned-value'
+import { useDistinctValue } from './use-distinct-value'
 
-describe('useInternedValue (shallow)', () => {
+describe('useDistinctValue (shallow)', () => {
   it('returns current instance when object changes', () => {
     const originalValue = { a: 1, b: 2 }
 
@@ -11,7 +11,7 @@ describe('useInternedValue (shallow)', () => {
       value: originalValue
     }
 
-    const { result, rerender } = renderHook(() => useInternedValue(props.value, isShallowEqual))
+    const { result, rerender } = renderHook(() => useDistinctValue(props.value, isShallowEqual))
     expect(result.current).toBe(originalValue)
 
     const newValue = { a: 1, b: 3 }
@@ -29,7 +29,7 @@ describe('useInternedValue (shallow)', () => {
       value: originalValue
     }
 
-    const { result, rerender } = renderHook(() => useInternedValue(props.value, isShallowEqual))
+    const { result, rerender } = renderHook(() => useDistinctValue(props.value, isShallowEqual))
     expect(result.current).toBe(originalValue)
 
     const newValue = { a: 1, b: 2 }
