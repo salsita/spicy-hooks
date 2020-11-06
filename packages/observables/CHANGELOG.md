@@ -1,3 +1,11 @@
+# v2.0.0
+_Nov 6, 2020_
+
+## Breaking changes
+
+- Use `Object.is` as the default equality function of `usePartialSnapshot` (#25) @goce-cz 
+
+
 # v1.0.1
 _Oct 9, 2020_
 

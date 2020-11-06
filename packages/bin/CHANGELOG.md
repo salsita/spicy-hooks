@@ -1,3 +1,11 @@
+# v2.0.0
+_Nov 6, 2020_
+
+## Features / enhancements
+
+- Add possibility to specify custom branch for `prepare-release` (#21) @goce-cz
+
+
 # v1.0.1
 _Oct 9, 2020_
 

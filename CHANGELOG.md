@@ -1,3 +1,24 @@
+# v2.0.0
+_Nov 6, 2020_
+
+## `core` - Breaking changes
+
+- Remove `useValueVersion` in favor of `useDistinctValue` (#29) @goce-cz 
+- Do not export `useStateWithoutRerender` as it is dangerous (#23) @goce-cz 
+
+## `core` - Features / enhancements
+
+- Add `useProperty` (#30) @goce-cz 
+
+## `observables` - Breaking changes
+
+- Use `Object.is` as the default equality function of `usePartialSnapshot` (#25) @goce-cz 
+
+## `bin` - Features / enhancements
+
+- Add possibility to specify custom branch for `prepare-release` (#21) @goce-cz
+
+
 # v1.0.1
 _Oct 9, 2020_
 
