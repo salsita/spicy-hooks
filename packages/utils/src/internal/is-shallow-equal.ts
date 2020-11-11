@@ -17,6 +17,10 @@ export function isShallowEqual<T> (objectA: T, objectB: T): boolean {
     return Array.isArray(objectB) && isEqualArray(objectA, objectB)
   }
 
+  if ((objectA === null) || (objectB === null)) {
+    return false
+  }
+
   if (!(typeof objectA === 'object' && typeof objectB === 'object')) {
     return false
   }
