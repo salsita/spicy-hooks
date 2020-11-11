@@ -78,6 +78,34 @@ describe('isShallowEqual', () => {
     expect(isShallowEqual(arrayA, arrayB)).toBe(true)
   })
 
+  it('handles null gracefully', () => {
+    expect(isShallowEqual(1, null)).toBe(false)
+    expect(isShallowEqual('a', null)).toBe(false)
+    expect(isShallowEqual(true, null)).toBe(false)
+    expect(isShallowEqual(['a'], null)).toBe(false)
+    expect(isShallowEqual({ prop: 1 }, null)).toBe(false)
+
+    expect(isShallowEqual(null, 1)).toBe(false)
+    expect(isShallowEqual(null, 'a')).toBe(false)
+    expect(isShallowEqual(null, true)).toBe(false)
+    expect(isShallowEqual(null, ['a'])).toBe(false)
+    expect(isShallowEqual(null, { prop: 1 })).toBe(false)
+  })
+
+  it('handles undefined gracefully', () => {
+    expect(isShallowEqual(1, undefined)).toBe(false)
+    expect(isShallowEqual('a', undefined)).toBe(false)
+    expect(isShallowEqual(true, undefined)).toBe(false)
+    expect(isShallowEqual(['a'], undefined)).toBe(false)
+    expect(isShallowEqual({ prop: 1 }, undefined)).toBe(false)
+
+    expect(isShallowEqual(undefined, 1)).toBe(false)
+    expect(isShallowEqual(undefined, 'a')).toBe(false)
+    expect(isShallowEqual(undefined, true)).toBe(false)
+    expect(isShallowEqual(undefined, ['a'])).toBe(false)
+    expect(isShallowEqual(undefined, { prop: 1 })).toBe(false)
+  })
+
   it('passes for equal primitives', () => {
     expect(isShallowEqual(1, 1)).toBe(true)
     expect(isShallowEqual(1, 1.0)).toBe(true)
