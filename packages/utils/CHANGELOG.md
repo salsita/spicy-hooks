@@ -1,3 +1,11 @@
+# v2.0.1
+_Nov 11, 2020_
+
+## Bug fixes
+
+- Prevent `isShallowEqual` from choking on null (#32) @goce-cz
+
+
 # v2.0.0
 _Nov 6, 2020_
 
