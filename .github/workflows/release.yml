@@ -20,13 +20,13 @@ jobs:
 
       - name: Setup variables
         run: |
-          GITHUB_TAG=$(echo "$GITHUB_REF" | awk -F '/' '{print $3}')
-          VERSION=$(echo "$GITHUB_TAG" | sed -e s/^v//)
-          VERSION_TAG=$(echo "$VERSION" | egrep -o "^[0-9\.]+-[a-z]+[0-9\.]*$" | egrep -o [a-z]+ | cat)
+          GITHUB_TAG=$(echo ${GITHUB_REF} | awk -F '/' '{print $3}')
+          VERSION=$(echo ${GITHUB_TAG} | sed -e s/^v//)
+          VERSION_TAG=$(echo ${VERSION} | egrep -o '^[0-9\.]+-[a-z]+[0-9\.]*$' | egrep -o [a-z]+ | cat)
 
-          echo "::set-env name=GITHUB_TAG::$GITHUB_TAG"
-          echo "::set-env name=VERSION::$VERSION"
-          echo "::set-env name=VERSION_TAG::$VERSION_TAG"
+          echo "GITHUB_TAG=$GITHUB_TAG" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_ENV
 
       - name: Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
