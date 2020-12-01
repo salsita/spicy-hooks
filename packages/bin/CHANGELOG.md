@@ -1,3 +1,8 @@
+# v2.0.2
+_Dec 1, 2020_
+
+* No significant change
+
 # v2.0.1
 _Nov 11, 2020_
 
