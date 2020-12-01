@@ -15,7 +15,7 @@ export function concurrentOne<T> (): OperatorFunction<Observable<T>, Observable<
   return source => new Observable(subscriber => {
     let pending$: Observable<T> | null = null
 
-    source.subscribe({
+    return source.subscribe({
       next: async observable => {
         if (pending$) {
           return

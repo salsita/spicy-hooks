@@ -1,8 +1,11 @@
-import { EMPTY, merge, of } from 'rxjs'
+import { EMPTY, merge, of, Subject } from 'rxjs'
 import { catchError, delay, map, mergeAll, tap, toArray } from 'rxjs/operators'
+import { latency } from '@spicy-hooks/utils'
 
 import { createAsyncObservable } from '../utils'
 import { concurrentLatest } from './concurrent-latest'
+import { bind } from './bind'
+import { coldFrom } from './cold-from'
 
 describe('concurrentLatest', () => {
   it('subscribes to each emitted observable', async () => {
@@ -96,7 +99,7 @@ describe('concurrentLatest', () => {
   it('recovers from failure of a nested observable (which comes after unsubscribe)', async () => {
     const log: string[] = []
     const higherOrderObservable = merge(
-      of(createAsyncObservable(-1, 15, log)),
+      of(createAsyncObservable(-1, 20, log)),
       of(createAsyncObservable(2, 5, log)).pipe(delay(3))
     )
 
@@ -180,5 +183,48 @@ describe('concurrentLatest', () => {
       'complete 2',
       'after complete 2'
     ])
+  })
+
+  it('unsubscribes from source when unsubscribed from (without emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentLatest()
+    )
+
+    expect(subject.observers.length).toBe(0)
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    expect(subject.observers.length).toBe(1)
+
+    subscription.unsubscribe()
+
+    expect(subject.observers.length).toBe(0)
+  })
+
+  it('unsubscribes from source when unsubscribed from (wit emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentLatest()
+    )
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    subject.next(1)
+
+    subscription.unsubscribe()
+    expect(subject.observers.length).toBe(0)
   })
 })

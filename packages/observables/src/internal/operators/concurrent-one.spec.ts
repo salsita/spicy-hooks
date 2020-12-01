@@ -1,8 +1,11 @@
-import { EMPTY, merge, of } from 'rxjs'
+import { EMPTY, merge, of, Subject } from 'rxjs'
 import { catchError, delay, map, mergeAll, tap, toArray } from 'rxjs/operators'
+import { latency } from '@spicy-hooks/utils'
 
 import { createAsyncObservable } from '../utils'
 import { concurrentOne } from './concurrent-one'
+import { bind } from './bind'
+import { coldFrom } from './cold-from'
 
 describe('concurrentOne', () => {
   it('doesn\'t run an observable when there is one pending already', async () => {
@@ -99,5 +102,48 @@ describe('concurrentOne', () => {
       'complete 2',
       'after complete 2'
     ])
+  })
+
+  it('unsubscribes from source when unsubscribed from (without emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentOne()
+    )
+
+    expect(subject.observers.length).toBe(0)
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    expect(subject.observers.length).toBe(1)
+
+    subscription.unsubscribe()
+
+    expect(subject.observers.length).toBe(0)
+  })
+
+  it('unsubscribes from source when unsubscribed from (wit emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentOne()
+    )
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    subject.next(1)
+
+    subscription.unsubscribe()
+    expect(subject.observers.length).toBe(0)
   })
 })
