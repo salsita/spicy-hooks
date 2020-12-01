@@ -35,7 +35,7 @@ export function concurrentOneAndLatest<T> (): OperatorFunction<Observable<T>, Ob
       }
     }
 
-    source.subscribe({
+    return source.subscribe({
       next: observable => {
         next$ = publish<T>()(observable)
         if (!pending$) {
