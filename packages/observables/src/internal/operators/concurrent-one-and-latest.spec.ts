@@ -1,7 +1,10 @@
-import { merge, of } from 'rxjs'
+import { merge, of, Subject } from 'rxjs'
 import { delay, mergeAll, tap, toArray } from 'rxjs/operators'
+import { latency } from '@spicy-hooks/utils'
 
 import { createAsyncObservable } from '../utils'
+import { coldFrom } from './cold-from'
+import { bind } from './bind'
 import { concurrentOneAndLatest } from './concurrent-one-and-latest'
 
 describe('concurrentOneAndLatest', () => {
@@ -161,5 +164,48 @@ describe('concurrentOneAndLatest', () => {
       'complete 2',
       'after complete 2'
     ])
+  })
+
+  it('unsubscribes from source when unsubscribed from (without emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentOneAndLatest()
+    )
+
+    expect(subject.observers.length).toBe(0)
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    expect(subject.observers.length).toBe(1)
+
+    subscription.unsubscribe()
+
+    expect(subject.observers.length).toBe(0)
+  })
+
+  it('unsubscribes from source when unsubscribed from (wit emission)', () => {
+    const subject = new Subject<number>()
+
+    const pipeLine = subject.pipe(
+      bind(async (i) => {
+        await latency(50)
+        return `i: ${i}`
+      }),
+      coldFrom(),
+      concurrentOneAndLatest()
+    )
+
+    const subscription = pipeLine.subscribe({ next: () => undefined })
+
+    subject.next(1)
+
+    subscription.unsubscribe()
+    expect(subject.observers.length).toBe(0)
   })
 })

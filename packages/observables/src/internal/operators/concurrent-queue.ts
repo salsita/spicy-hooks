@@ -12,7 +12,7 @@ import { publish } from 'rxjs/operators'
 export function concurrentQueue<T> (): OperatorFunction<Observable<T>, Observable<T>> {
   return source => new Observable(subscriber => {
     let tail$: Observable<T> = EMPTY
-    source.subscribe({
+    return source.subscribe({
       next: async observable => {
         const previous$ = tail$
         const current$ = publish<T>()(observable)

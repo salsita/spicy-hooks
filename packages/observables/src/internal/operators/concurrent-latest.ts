@@ -21,7 +21,7 @@ export function concurrentLatest<T> (cancelError?: any): OperatorFunction<Observ
     let pending$: Observable<T> = EMPTY
     let pendingSubject: Subject<T> | null = null
 
-    source.subscribe({
+    return source.subscribe({
       next: observable => {
         if (pendingSubject) {
           if (cancelError !== undefined) {
