@@ -1,3 +1,11 @@
+# v1.0.2
+_Dec 1, 2020_
+
+## `observables` - Bug fixes
+
+- Make the `concurrent*` operators unsubscribe from source (#37) @goce-cz
+
+
 # v1.0.1
 _Oct 9, 2020_
 
