@@ -1,3 +1,8 @@
+# v2.0.3
+_Dec 17, 2020_
+
+Re-publish all packages to NPM to have proper version for the `latest` tag.
+
 # v2.0.2
 _Dec 1, 2020_
 
