@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 
 import { SimpleSubscribable, Updatable } from '../utils'
 
@@ -10,12 +10,14 @@ import { SimpleSubscribable, Updatable } from '../utils'
 export interface UpdatableSubscribable<T> extends Updatable<T>, SimpleSubscribable<T> {
 }
 
+export type StoreLike<T> = Observable<T> & Updatable<T>
+
 /**
  * Base class for every RxJS store.
  *
  * @typeParam T type of the store's state
  */
-export class Store<T> extends BehaviorSubject<T> implements UpdatableSubscribable<T> {
+export class Store<T> extends BehaviorSubject<T> implements UpdatableSubscribable<T>, StoreLike<T> {
   /**
    * @inheritDoc
    */
