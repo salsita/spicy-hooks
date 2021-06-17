@@ -1,8 +1,9 @@
 import { Observable, of, Subject } from 'rxjs'
-import { latency, deferredFn } from '@spicy-hooks/utils'
+import { latency } from '@spicy-hooks/utils'
 
 import { coldFrom } from './cold-from'
 import { getSynchronousEmit } from '../utils'
+import { deferredFn } from '../testing/deferred-fn'
 
 describe('coldFrom', () => {
   it('defers execution until subscribed to', () => {
