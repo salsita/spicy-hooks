@@ -1,3 +1,15 @@
+# v2.1.0
+_Jun 17, 2021_
+
+## Features / enhancements
+
+- Add `core/useDisposable` (#34) @goce-cz 
+
+## Bug fixes
+
+- Move `deferredFn` to observables as it depends on RxJS (#41) @goce-cz 
+
+
 # v2.0.3
 _Dec 17, 2020_
 
