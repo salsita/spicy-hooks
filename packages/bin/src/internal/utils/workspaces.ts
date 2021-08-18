@@ -1,6 +1,8 @@
 import { resolve } from 'path'
 import { promisify } from 'util'
 import { glob } from 'glob'
+import { isTruthy } from '@spicy-hooks/utils'
+import { existsSync } from 'fs-extra'
 
 import { PackageJson, readPackageJson, writePackageJson } from './package-json'
 
@@ -22,8 +24,11 @@ export async function readAllPackages (workspaceRoot: string): Promise<Workspace
   )
   const workspaces = resolvedPatterns.flat()
 
-  const workspacePackageJsons: WorkspacePackage[] = await Promise.all(workspaces.map(async path => {
+  const workspacePackageJsons: Array<WorkspacePackage | null> = await Promise.all(workspaces.map(async path => {
     const file = resolve(path, 'package.json')
+    if (!existsSync(file)) {
+      return null
+    }
     return {
       path,
       packageJson: await readPackageJson(file)
@@ -32,7 +37,7 @@ export async function readAllPackages (workspaceRoot: string): Promise<Workspace
 
   return [
     { path: rootDir, packageJson: rootPackageJson },
-    ...workspacePackageJsons
+    ...workspacePackageJsons.filter(isTruthy)
   ]
 }
 
