@@ -1,3 +1,11 @@
+# v2.1.1
+_Sep 14, 2021_
+
+## `bin` - Bug fixes
+
+- Ignore workspaces without `package.json` (#42) @goce-cz
+
+
 # v2.1.0
 _Jun 17, 2021_
 
