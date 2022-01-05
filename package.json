@@ -12,7 +12,7 @@
     ]
   },
   "dependencies": {
-    "react": "^16.13.1",
+    "react": "^17.0.2",
     "rxjs": "^6.6.3"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.4.2",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^26.4.1",
     "typedoc": "next",
     "typescript": "^4.0.3"
