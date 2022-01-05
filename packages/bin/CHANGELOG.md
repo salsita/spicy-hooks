@@ -1,3 +1,8 @@
+# v2.1.2
+_Jan 5, 2022_
+
+* No significant change
+
 # v2.1.1
 _Sep 14, 2021_
 

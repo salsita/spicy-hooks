@@ -1,3 +1,11 @@
+# v2.1.2
+_Jan 5, 2022_
+
+## Bug fixes
+
+- Support recent versions of React
+
+
 # v2.1.1
 _Sep 14, 2021_
 

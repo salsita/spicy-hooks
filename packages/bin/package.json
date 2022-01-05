@@ -1,6 +1,6 @@
 {
   "name": "@spicy-hooks/bin",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@expo/spawn-async": "^1.5.0",
     "@octokit/core": "^3.1.2",
-    "@spicy-hooks/utils": "2.1.1",
+    "@spicy-hooks/utils": "2.1.2",
     "chalk": "^4.1.0",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",

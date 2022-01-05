@@ -1,3 +1,19 @@
+# v2.1.2
+_Jan 5, 2022_
+
+## `core` - Bug fixes
+
+- Support recent versions of React
+
+## `observables` - Bug fixes
+
+- Support recent versions of React
+
+## `utils` - Bug fixes
+
+- Remove unnecessary dependency on React
+
+
 # v2.1.1
 _Sep 14, 2021_
 
