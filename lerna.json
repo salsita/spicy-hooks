@@ -1,0 +1,13 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "command": {
+    "version": {
+      "message": "chore(release): publish",
+      "createRelease": "github"
+    },
+    "publish": {
+      "push": false
+    }
+  }
+}

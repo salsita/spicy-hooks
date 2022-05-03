@@ -35,5 +35,6 @@
   },
   "bin": {
     "spicy": "./lib/spicy.js"
-  }
+  },
+  "gitHead": "9d62ef7b4dd3a53507d5bb99cc359f3517f6c1f7"
 }
