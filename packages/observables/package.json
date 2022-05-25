@@ -14,8 +14,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@spicy-hooks/utils": "2.1.2",
     "@spicy-hooks/core": "2.1.2",
+    "@spicy-hooks/utils": "2.1.2",
     "tslib": "^2.0.1"
   },
   "peerDependencies": {
