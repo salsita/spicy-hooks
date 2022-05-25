@@ -39,8 +39,8 @@
   },
   "scripts": {
     "preinstall": "git config core.hooksPath git-hooks",
-    "build": "tsc -b packages/utils/tsconfig.build.json packages/core/tsconfig.build.json packages/observables/tsconfig.build.json packages/bin/tsconfig.build.json",
-    "watch": "tsc -b packages/utils/tsconfig.build.json packages/core/tsconfig.build.json packages/observables/tsconfig.build.json packages/bin/tsconfig.build.json -w",
+    "build": "tsc -b packages/*/tsconfig.build.json",
+    "watch": "tsc -b packages/*/tsconfig.build.json -w",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "typedoc": "typedoc packages/core/src/index.ts packages/observables/src/index.ts packages/utils/src/index.ts",
@@ -85,5 +85,6 @@
     "globals": {
       "tsconfig": "./tsconfig.json"
     }
-  }
+  },
+  "packageManager": "yarn@3.2.1"
 }
