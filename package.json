@@ -1,6 +1,6 @@
 {
   "name": "spicy-hooks",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "private": true,
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.4.2",
+    "lerna": "^5.0.0",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^26.4.1",
     "typedoc": "next",
@@ -46,31 +47,6 @@
     "typedoc": "typedoc packages/core/src/index.ts packages/observables/src/index.ts packages/utils/src/index.ts",
     "redirect-refs": "yarn spicy redirect-refs {packages/**/*.md,typedoc/**/*.html} -b next -p https://spicy-hooks.salsita.co https://github.com/salsita/spicy-hooks/tree https://github.com/salsita/spicy-hooks/blob",
     "spicy": "cross-env node packages/bin/lib/spicy.js"
-  },
-  "changelogs": {
-    "separator": "\n(?=## )",
-    "mappings": [
-      {
-        "pattern": "(.)",
-        "file": "CHANGELOG.md"
-      },
-      {
-        "pattern": "^(## )`core` - ",
-        "file": "packages/core/CHANGELOG.md"
-      },
-      {
-        "pattern": "^(## )`observables` - ",
-        "file": "packages/observables/CHANGELOG.md"
-      },
-      {
-        "pattern": "^(## )`bin` - ",
-        "file": "packages/bin/CHANGELOG.md"
-      },
-      {
-        "pattern": "^(## )`utils` - ",
-        "file": "packages/utils/CHANGELOG.md"
-      }
-    ]
   },
   "jest": {
     "preset": "ts-jest",

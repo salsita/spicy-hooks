@@ -4,6 +4,7 @@
 
 /**/yarn-error.log
 /**/tsconfig.tsbuildinfo
+lerna-debug.log
 
 /packages/*/lib
 /typedoc
