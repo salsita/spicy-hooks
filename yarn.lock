@@ -410,15 +410,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@expo/spawn-async@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@expo/spawn-async@npm:1.5.0"
-  dependencies:
-    cross-spawn: ^6.0.5
-  checksum: 5b144726f66426d9198aa07cca6944deab328369f806c0d30836a19a014d32106e8230c41dde7857a5a3f45f9381a0858df27edc3506be2b7e863fc024290442
-  languageName: node
-  linkType: hard
-
 "@gar/promisify@npm:^1.0.1, @gar/promisify@npm:^1.1.3":
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
@@ -1684,35 +1675,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/auth-token@npm:^2.4.0":
-  version: 2.4.2
-  resolution: "@octokit/auth-token@npm:2.4.2"
-  dependencies:
-    "@octokit/types": ^5.0.0
-  checksum: 7d9f8ac3167b44dc11fb9a66914fb7934ca937d0422a58275ecc931fc210baa30e3688104e7e91da5ef55be70b50050ec1241e74fa9dae3d7416f7191e58054c
-  languageName: node
-  linkType: hard
-
 "@octokit/auth-token@npm:^2.4.4":
   version: 2.5.0
   resolution: "@octokit/auth-token@npm:2.5.0"
   dependencies:
     "@octokit/types": ^6.0.3
   checksum: 45949296c09abcd6beb4c3f69d45b0c1f265f9581d2a9683cf4d1800c4cf8259c2f58d58e44c16c20bffb85a0282a176c0d51f4af300e428b863f27b910e6297
-  languageName: node
-  linkType: hard
-
-"@octokit/core@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "@octokit/core@npm:3.1.2"
-  dependencies:
-    "@octokit/auth-token": ^2.4.0
-    "@octokit/graphql": ^4.3.1
-    "@octokit/request": ^5.4.0
-    "@octokit/types": ^5.0.0
-    before-after-hook: ^2.1.0
-    universal-user-agent: ^6.0.0
-  checksum: c31908886b9836b2f2c00005aa798f5b19deb46bb0f35699a6a2afb1d51bb3c4b6dbc8f2034e29cee47badd1513c651db31f96648b1bf6809934c61d56500c43
   languageName: node
   linkType: hard
 
@@ -1739,17 +1707,6 @@ __metadata:
     is-plain-object: ^5.0.0
     universal-user-agent: ^6.0.0
   checksum: 01213eec8890ec6c51972255f58682884f7a40473ccaecb14cc30246aa204ab82cec55722d51ea84e3fdc1aa7643bd0cdbe9edc3f2cbab2124fa89e70a426301
-  languageName: node
-  linkType: hard
-
-"@octokit/graphql@npm:^4.3.1":
-  version: 4.5.6
-  resolution: "@octokit/graphql@npm:4.5.6"
-  dependencies:
-    "@octokit/request": ^5.3.0
-    "@octokit/types": ^5.0.0
-    universal-user-agent: ^6.0.0
-  checksum: fa6432a1255e37d10a643d6e009529a5151a0e2875fa73d1c9a803604f8c63d6fc0c1cb06cd3502fa00fdb4d0cab6932d301b58511ea3b50d6dac5de73507650
   languageName: node
   linkType: hard
 
@@ -1810,17 +1767,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/request-error@npm:^2.0.0":
-  version: 2.0.2
-  resolution: "@octokit/request-error@npm:2.0.2"
-  dependencies:
-    "@octokit/types": ^5.0.1
-    deprecation: ^2.0.0
-    once: ^1.4.0
-  checksum: de3b4fdf2c03975f23308981a0228adfa1c52e82e330cbe055f0e8e00adb416bcc976ba89d0c262eadfc644e3ddec8c523410548e92e10c4817376b2c8f5921e
-  languageName: node
-  linkType: hard
-
 "@octokit/request-error@npm:^2.0.5, @octokit/request-error@npm:^2.1.0":
   version: 2.1.0
   resolution: "@octokit/request-error@npm:2.1.0"
@@ -1829,22 +1775,6 @@ __metadata:
     deprecation: ^2.0.0
     once: ^1.4.0
   checksum: baec2b5700498be01b4d958f9472cb776b3f3b0ea52924323a07e7a88572e24cac2cdf7eb04a0614031ba346043558b47bea2d346e98f0e8385b4261f138ef18
-  languageName: node
-  linkType: hard
-
-"@octokit/request@npm:^5.3.0, @octokit/request@npm:^5.4.0":
-  version: 5.4.9
-  resolution: "@octokit/request@npm:5.4.9"
-  dependencies:
-    "@octokit/endpoint": ^6.0.1
-    "@octokit/request-error": ^2.0.0
-    "@octokit/types": ^5.0.0
-    deprecation: ^2.0.0
-    is-plain-object: ^5.0.0
-    node-fetch: ^2.6.1
-    once: ^1.4.0
-    universal-user-agent: ^6.0.0
-  checksum: a6ce0dab4718c6982f867726658f5a625f3ac247cf950bef00c7094af172cbce88753c938913d008ade65b8989f057ba864105095fd96fdc3a3903b18466288c
   languageName: node
   linkType: hard
 
@@ -1874,7 +1804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/types@npm:^5.0.0, @octokit/types@npm:^5.0.1":
+"@octokit/types@npm:^5.0.0":
   version: 5.5.0
   resolution: "@octokit/types@npm:5.5.0"
   dependencies:
@@ -1914,20 +1844,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/bin@workspace:packages/bin"
   dependencies:
-    "@expo/spawn-async": ^1.5.0
-    "@octokit/core": ^3.1.2
     "@spicy-hooks/utils": ^2.1.3
     "@types/command-line-args": ^5.0.0
     "@types/command-line-usage": ^5.0.1
     "@types/dotenv": ^8.2.0
-    "@types/fs-extra": ^9.0.1
     "@types/glob": ^7.1.3
     "@types/lodash": ^4.14.161
     chalk: ^4.1.0
     command-line-args: ^5.1.1
     command-line-usage: ^6.1.0
     dotenv: ^8.2.0
-    fs-extra: ^9.0.1
     glob: ^7.1.6
     lodash: ^4.17.20
     tslib: ^2.0.1
@@ -2069,15 +1995,6 @@ __metadata:
   dependencies:
     dotenv: "*"
   checksum: a1f524da7dc18b09bdb6c2613b9abbbe8ca575621cce4625efc7f98daf2ba07c7dbab622c9bb394507a12c5c515f9cbbbba4aeec17b801c88faeb8e8e656d460
-  languageName: node
-  linkType: hard
-
-"@types/fs-extra@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "@types/fs-extra@npm:9.0.1"
-  dependencies:
-    "@types/node": "*"
-  checksum: fc300cf4f28223a39d7154226b67f5338605b6685cb134d151be5f2af3d8e087a72280330f407a4be078b8199073129b2218c7fc3662abea020805b43fcc7e3d
   languageName: node
   linkType: hard
 
@@ -2971,13 +2888,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"before-after-hook@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "before-after-hook@npm:2.1.0"
-  checksum: bb956b32d322771544b71a8f1c2e5265f3b37f5138955c1bccb38a7aef74c766156b4401ee06d2604f19b27dd29fe6f7dc6a1aa86dccb314028885a5ed211131
-  languageName: node
-  linkType: hard
-
 "before-after-hook@npm:^2.2.0":
   version: 2.2.2
   resolution: "before-after-hook@npm:2.2.2"
@@ -3718,7 +3628,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^6.0.0, cross-spawn@npm:^6.0.5":
+"cross-spawn@npm:^6.0.0":
   version: 6.0.5
   resolution: "cross-spawn@npm:6.0.5"
   dependencies:
@@ -4947,18 +4857,6 @@ __metadata:
     jsonfile: ^4.0.0
     universalify: ^0.1.0
   checksum: bf44f0e6cea59d5ce071bba4c43ca76d216f89e402dc6285c128abc0902e9b8525135aa808adad72c9d5d218e9f4bcc63962815529ff2f684ad532172a284880
-  languageName: node
-  linkType: hard
-
-"fs-extra@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "fs-extra@npm:9.0.1"
-  dependencies:
-    at-least-node: ^1.0.0
-    graceful-fs: ^4.2.0
-    jsonfile: ^6.0.1
-    universalify: ^1.0.0
-  checksum: 0110da06b4def68f2ed0343c0df518d6a3699373b826dc1848bdd18cea5e30ac282a412ff58b459c2a38f280301a31ce42a585c5f0506b412fe5259680876ccf
   languageName: node
   linkType: hard
 

@@ -2,7 +2,7 @@ import { promisify } from 'util'
 import { resolve } from 'path'
 import glob from 'glob'
 import { greenBright, gray } from 'chalk'
-import { readFile, writeFile } from 'fs-extra'
+import { readFile, writeFile } from 'fs/promises'
 import { escapeRegExp } from 'lodash'
 
 import { CommandDefinition } from '../utils/command-definition'

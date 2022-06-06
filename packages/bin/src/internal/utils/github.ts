@@ -1,9 +1,4 @@
-import { ReposListReleasesResponseData } from '@octokit/types'
-import { Octokit } from '@octokit/core'
-
 import { PackageJson } from './package-json'
-
-export type Release = ReposListReleasesResponseData[0]
 
 export interface GitHubRepository {
   owner: string
@@ -29,14 +24,4 @@ export function getGitHubRepository (packageJson: PackageJson): GitHubRepository
     repo,
     directory: packageJson.repository.directory
   }
-}
-
-export async function findLatestReleaseDraft (targetBranchName: string, repository: GitHubRepository, token?: string): Promise<Release | undefined> {
-  const octokit = new Octokit({ auth: token })
-  const { owner, repo } = repository
-  const { data: releases } = await octokit.request('GET /repos/:owner/:repo/releases', {
-    owner,
-    repo
-  })
-  return releases.find(release => release.draft && release.target_commitish === targetBranchName)
 }
