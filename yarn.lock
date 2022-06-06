@@ -1887,7 +1887,7 @@ __metadata:
     typescript: ^4.7.3
   peerDependencies:
     react: ">=16.9.0"
-    rxjs: ^7.5.5
+    rxjs: ">=6.6.3"
   languageName: unknown
   linkType: soft
 
