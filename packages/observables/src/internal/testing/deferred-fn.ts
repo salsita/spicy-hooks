@@ -41,7 +41,7 @@ export function deferredFn<T, Y extends any[]> (implementation?: (...args: Y) =>
   const callSubject = new Subject<T>()
   const mockFn = jest.fn((...args: Y) => {
     const result = implementation?.(...args)
-    callSubject.next(result)
+    callSubject.next(result as T)
     return result
   }) as DeferredMock<T, Y>
 

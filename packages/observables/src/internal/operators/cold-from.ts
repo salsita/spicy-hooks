@@ -1,5 +1,4 @@
-import { Observable, ObservableInput, OperatorFunction } from 'rxjs'
-import { subscribeTo } from 'rxjs/internal-compatibility'
+import { Observable, ObservableInput, OperatorFunction, from } from 'rxjs'
 import { map } from 'rxjs/operators'
 
 /**
@@ -11,11 +10,9 @@ import { map } from 'rxjs/operators'
 export function coldFrom<T> (): OperatorFunction<() => ObservableInput<T>, Observable<T>> {
   return map(factory =>
     new Observable<T>(subscriber => {
-      const subscription = subscribeTo(factory())(subscriber)
+      const subscription = from(factory()).subscribe(subscriber)
       return () => {
-        if (subscription) {
-          subscription.unsubscribe()
-        }
+        subscription.unsubscribe()
       }
     })
   )
