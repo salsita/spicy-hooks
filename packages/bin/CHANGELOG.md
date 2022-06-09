@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/salsita/spicy-hooks/compare/v2.1.2...v2.2.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* Fix typing issue ([d26fbf3](https://github.com/salsita/spicy-hooks/commit/d26fbf3c094f84efcb3b34771dbcb2be277523b1))
+
+
+### Features
+
+* Support RxJS 7 ([#43](https://github.com/salsita/spicy-hooks/issues/43)) ([12b0384](https://github.com/salsita/spicy-hooks/commit/12b038415d35e34ce42d2f696cd79e05a06d6e9c))
+
+
+
+
+
 ## 2.1.1 (2021-09-14)
 
 ### Bug fixes
