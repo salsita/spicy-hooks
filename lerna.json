@@ -7,7 +7,7 @@
       "message": "chore(release): %s",
       "createRelease": "github",
       "conventionalCommits": true,
-      "push": false
+      "push": true
     }
   }
 }
