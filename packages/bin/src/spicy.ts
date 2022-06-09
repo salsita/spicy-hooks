@@ -10,12 +10,9 @@ import {
   TypedOptionDefinitions,
   validateOptions
 } from './internal/utils/typed-command-line-arguments'
-import { checkVersionCommand, prepareReleaseCommand, redirectRefsCommand, setVersionCommand } from './internal/commands'
+import { redirectRefsCommand } from './internal/commands'
 
 const commandDefinitions: Array<CommandDefinition<any>> = [
-  checkVersionCommand,
-  setVersionCommand,
-  prepareReleaseCommand,
   redirectRefsCommand
 ]
 
