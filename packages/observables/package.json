@@ -1,6 +1,6 @@
 {
   "name": "@spicy-hooks/observables",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@spicy-hooks/core": "^2.2.0",
+    "@spicy-hooks/core": "^2.2.1",
     "@spicy-hooks/utils": "^2.2.0",
     "tslib": "^2.4.0"
   },
