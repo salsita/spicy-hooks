@@ -1,4 +1,4 @@
-import React, { createContext, FunctionComponent, useContext, useMemo } from 'react'
+import React, { createContext, FunctionComponent, ReactNode, useContext, useMemo } from 'react'
 import { isFunction, isShallowEqual } from '@spicy-hooks/utils'
 
 import { useDistinctValue } from './use-distinct-value'
@@ -8,7 +8,7 @@ import { useDistinctValue } from './use-distinct-value'
  *
  * @see [[createUseDependencies]]
  */
-export type OverrideComponent<T extends Record<string, any>> = FunctionComponent<{ values: Partial<T> }>
+export type OverrideComponent<T extends Record<string, any>> = FunctionComponent<{ values: Partial<T>, children?: ReactNode }>
 
 /**
  * A hook that fetches dependencies from a dependency injection layer.

@@ -1916,7 +1916,7 @@ __metadata:
   dependencies:
     "@expo/spawn-async": ^1.5.0
     "@octokit/core": ^3.1.2
-    "@spicy-hooks/utils": ^2.1.3
+    "@spicy-hooks/utils": ^2.2.0
     "@types/command-line-args": ^5.0.0
     "@types/command-line-usage": ^5.0.1
     "@types/dotenv": ^8.2.0
@@ -1937,11 +1937,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spicy-hooks/core@^2.1.3, @spicy-hooks/core@workspace:packages/core":
+"@spicy-hooks/core@^2.2.0, @spicy-hooks/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/core@workspace:packages/core"
   dependencies:
-    "@spicy-hooks/utils": ^2.1.3
+    "@spicy-hooks/utils": ^2.2.0
     "@types/react": ^16.9.49
     tslib: ^2.4.0
     typescript: ^4.7.3
@@ -1954,8 +1954,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/observables@workspace:packages/observables"
   dependencies:
-    "@spicy-hooks/core": ^2.1.3
-    "@spicy-hooks/utils": ^2.1.3
+    "@spicy-hooks/core": ^2.2.0
+    "@spicy-hooks/utils": ^2.2.0
     "@types/react": ^16.9.49
     tslib: ^2.4.0
     typescript: ^4.7.3
@@ -1965,7 +1965,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spicy-hooks/utils@^2.1.3, @spicy-hooks/utils@workspace:packages/utils":
+"@spicy-hooks/utils@^2.2.0, @spicy-hooks/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/utils@workspace:packages/utils"
   dependencies:
