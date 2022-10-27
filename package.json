@@ -1,6 +1,5 @@
 {
   "name": "spicy-hooks",
-  "version": "2.1.3",
   "private": true,
   "repository": {
     "type": "git",
@@ -16,10 +15,12 @@
     "rxjs": "^7.5.5"
   },
   "devDependencies": {
+    "@lerna-lite/cli": "^1.12.0",
     "@testing-library/react-hooks": "^3.4.2",
     "@types/jest": "^26.0.10",
     "@typescript-eslint/eslint-plugin": "^4.4.0",
     "@typescript-eslint/parser": "^4.4.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "cross-env": "^7.0.2",
     "dotenv": "^16.0.1",
     "eslint": "^7.10.0",
@@ -33,7 +34,6 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.4.2",
-    "lerna": "^5.0.0",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^26.4.1",
     "typedoc": "next",
@@ -41,6 +41,7 @@
   },
   "scripts": {
     "preinstall": "git config core.hooksPath git-hooks",
+    "prepack": "yarn build",
     "build": "tsc -b packages/*/tsconfig.build.json",
     "watch": "tsc -b packages/*/tsconfig.build.json -w",
     "clean-build": "rm -rf packages/*/{tsconfig.tsbuildinfo,lib}",
