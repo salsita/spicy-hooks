@@ -43,9 +43,11 @@ export function concurrentOneAndLatest<T> (): OperatorFunction<Observable<T>, Ob
         }
       },
       error: err => subscriber.error(err),
-      complete: () => (next$ ?? pending$ ?? EMPTY).toPromise().finally(() => {
-        subscriber.complete()
-      }).catch(noop)
+      complete: () => {
+        (next$ ?? pending$ ?? EMPTY).toPromise().finally(() => {
+          subscriber.complete()
+        }).catch(noop)
+      }
     })
   })
 }

@@ -16,7 +16,7 @@ export function concurrentOne<T> (): OperatorFunction<Observable<T>, Observable<
     let pending$: Observable<T> | null = null
 
     return source.subscribe({
-      next: async observable => {
+      next: observable => {
         if (pending$) {
           return
         }
@@ -33,7 +33,9 @@ export function concurrentOne<T> (): OperatorFunction<Observable<T>, Observable<
         subscriber.next(current$)
       },
       error: err => subscriber.error(err),
-      complete: () => (pending$ ?? EMPTY).toPromise().finally(() => subscriber.complete()).catch(noop)
+      complete: () => {
+        (pending$ ?? EMPTY).toPromise().finally(() => subscriber.complete()).catch(noop)
+      }
     })
   })
 }
