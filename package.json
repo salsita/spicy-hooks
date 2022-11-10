@@ -43,6 +43,7 @@
     "preinstall": "git config core.hooksPath git-hooks",
     "build": "tsc -b packages/*/tsconfig.build.json",
     "watch": "tsc -b packages/*/tsconfig.build.json -w",
+    "clean-build": "rm -rf packages/*/{tsconfig.tsbuildinfo,lib}",
     "test": "jest",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "typedoc": "typedoc packages/core/src/index.ts packages/observables/src/index.ts packages/utils/src/index.ts",
