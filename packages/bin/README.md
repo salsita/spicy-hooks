@@ -28,25 +28,6 @@ yarn add @spicy-hooks/bin --dev
 
 ## Commands
 
-### `check-version`
-
-Checks whether the `version` property in `package.json` of every workspace package matches the specified value.
-
-Read [more about `check-version`](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/check-version.md)
-
-### `set-version`
-
-Sets a `version` property in `package.json` of every workspace package to the specified value.
-
-Read [more about `set-version`](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/set-version.md)
-
-### `prepare-release`
-
-Pulls the latest release draft linked to the current Git branch from GitHub,
-updates changelogs and set appropriate package versions.
-
-Read [more about `prepare-release`](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/prepare-release.md)
-
 ### `redirect-refs`
 
 Redirects any link pointing to the main-branch to a specific ref.
@@ -74,7 +55,4 @@ Please submit any issue or feature request on [the main project](https://github.
 
 ## Documentation
 
-* [check-version](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/check-version.md)
-* [set-version](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/set-version.md)
-* [prepare-release](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/prepare-release.md)
 * [redirect-refs](https://github.com/salsita/spicy-hooks/blob/next/packages/bin/docs/redirect-refs.md)
