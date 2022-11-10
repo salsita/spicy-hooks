@@ -2,12 +2,18 @@
   "version": "2.2.1",
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "ignoreChanges": ["**/*.spec.*"],
   "command": {
     "version": {
       "message": "chore(release): %s",
       "createRelease": "github",
       "conventionalCommits": true,
-      "push": true
+      "changelogIncludeCommitsClientLogin": " by @%l",
+      "changelogPreset": {
+        "name": "conventionalcommits"
+      },
+      "push": true,
+      "syncWorkspaceLock": true
     }
   }
 }

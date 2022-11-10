@@ -1,6 +1,6 @@
 # Releasing
 
-Whole release process is entirely automated and handled by `lerna`.
+Whole release process is entirely automated and handled by [`lerna-lite`](https://github.com/ghiscoding/lerna-lite).
 See [complete instructions](#publishing-a-regular-release) below.
 
 ## Release notes

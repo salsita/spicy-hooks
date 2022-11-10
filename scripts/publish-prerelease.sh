@@ -3,4 +3,4 @@ if [ -z "$1" ]; then
   echo "  publish-prerelease.sh beta"
 fi
 
-lerna publish prerelease --preid "$1" --dist-tag "$1"
+yarn lerna publish prerelease --preid "$1" --dist-tag "$1" --message "chore(prerelease): %s" --exact --no-changelog
