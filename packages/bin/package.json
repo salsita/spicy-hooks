@@ -19,13 +19,13 @@
     "dotenv": "^16.0.3",
     "glob": "^8.0.3",
     "lodash": "^4.17.21",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",
     "@types/command-line-usage": "^5.0.2",
     "@types/glob": "^8.0.0",
-    "@types/lodash": "^4.14.186",
+    "@types/lodash": "^4.14.188",
     "typescript": "^4.8.4"
   },
   "bin": {
