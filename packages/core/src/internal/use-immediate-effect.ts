@@ -1,7 +1,7 @@
 import { DependencyList, EffectCallback, useEffect, useRef } from 'react'
 import { isEqualArray } from '@spicy-hooks/utils'
 
-type TearDownLogic = () => void | undefined
+type TearDownLogic = ReturnType<EffectCallback>
 
 /**
  * **Warning**: It is usually a bad practice to trigger side-effects directly during the render phase.

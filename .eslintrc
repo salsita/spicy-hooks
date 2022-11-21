@@ -106,7 +106,7 @@
         "@typescript-eslint/no-floating-promises": "off",
         "jest/expect-expect": "warn",
         "jest/no-identical-title": "warn",
-        "jest/valid-describe": "warn",
+        "jest/valid-describe-callback": "warn",
         "jest/valid-expect": "warn",
         "jest/valid-expect-in-promise": "warn"
       }

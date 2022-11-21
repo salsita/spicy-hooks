@@ -13,6 +13,7 @@ export function concurrentQueue<T> (): OperatorFunction<Observable<T>, Observabl
   return source => new Observable(subscriber => {
     let tail$: Observable<T> = EMPTY
     return source.subscribe({
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       next: async observable => {
         const previous$ = tail$
         const current$ = publish<T>()(observable)
@@ -32,7 +33,9 @@ export function concurrentQueue<T> (): OperatorFunction<Observable<T>, Observabl
         }).catch(noop)
       },
       error: err => subscriber.error(err),
-      complete: () => tail$.toPromise().finally(() => subscriber.complete()).catch(noop)
+      complete: () => {
+        tail$.toPromise().finally(() => subscriber.complete()).catch(noop)
+      }
     })
   })
 }

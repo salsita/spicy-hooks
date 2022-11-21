@@ -55,7 +55,9 @@ export function concurrentLatest<T> (cancelError?: any): OperatorFunction<Observ
         subscriber.next(current$)
       },
       error: err => subscriber.error(err),
-      complete: () => pending$.toPromise().finally(() => subscriber.complete()).catch(noop)
+      complete: () => {
+        pending$.toPromise().finally(() => subscriber.complete()).catch(noop)
+      }
     })
   })
 }

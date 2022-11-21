@@ -212,9 +212,7 @@ describe('useSnapshot', () => {
       }
     })
 
-    const props: { observable: Observable<any> | null } = {
-      observable: observable
-    }
+    const props: { observable: Observable<any> | null } = { observable }
 
     const { result, rerender } = renderHook(() => useSnapshot(props.observable))
     expect(result.current).toEqual([null, SnapshotState.WAITING, null])
