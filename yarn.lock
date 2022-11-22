@@ -1518,7 +1518,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/bin@workspace:packages/bin"
   dependencies:
-    "@spicy-hooks/utils": ^2.2.0
+    "@spicy-hooks/utils": ^3.0.0
     "@types/command-line-args": ^5.2.0
     "@types/command-line-usage": ^5.0.2
     "@types/glob": ^8.0.0
@@ -1536,11 +1536,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spicy-hooks/core@^2.2.1, @spicy-hooks/core@workspace:packages/core":
+"@spicy-hooks/core@^3.0.0, @spicy-hooks/core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/core@workspace:packages/core"
   dependencies:
-    "@spicy-hooks/utils": ^2.2.0
+    "@spicy-hooks/utils": ^3.0.0
     "@types/react": ^18.0.25
     tslib: ^2.4.1
     typescript: ^4.8.4
@@ -1553,8 +1553,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/observables@workspace:packages/observables"
   dependencies:
-    "@spicy-hooks/core": ^2.2.1
-    "@spicy-hooks/utils": ^2.2.0
+    "@spicy-hooks/core": ^3.0.0
+    "@spicy-hooks/utils": ^3.0.0
     "@types/react": ^18.0.25
     tslib: ^2.4.1
     typescript: ^4.8.4
@@ -1564,7 +1564,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spicy-hooks/utils@^2.2.0, @spicy-hooks/utils@workspace:packages/utils":
+"@spicy-hooks/utils@^3.0.0, @spicy-hooks/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@spicy-hooks/utils@workspace:packages/utils"
   dependencies:
